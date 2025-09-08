@@ -1,0 +1,40 @@
+# Perfil de demanda: Mediodía (11 AM - 2 PM)
+# Tráfico moderado y más equilibrado, sin direccionalidad fuerte
+seed: 42
+type: dynamic
+base_vph:
+  E2W: 300  # Flujo moderado base
+  E2N: 250  # Flujo moderado base  
+  S2N: 300  # Flujo moderado base
+  S2W: 250  # Flujo moderado base
+
+windows:
+  # Pre-almuerzo (11 AM-12 PM)
+  - begin: 0
+    end: 3600
+    delta_vph:
+      E2W: 150    # 300+150=450 vph
+      E2N: 100    # 250+100=350 vph
+      S2N: 150    # 300+150=450 vph  
+      S2W: 100    # 250+100=350 vph
+      
+  # Hora de almuerzo (12-1 PM) - pico moderado
+  - begin: 3600
+    end: 7200  
+    delta_vph:
+      E2W: 250    # 300+250=550 vph pico almuerzo
+      E2N: 200    # 250+200=450 vph
+      S2N: 250    # 300+250=550 vph pico almuerzo
+      S2W: 200    # 250+200=450 vph
+      
+  # Post-almuerzo (1-2 PM) - vuelta a normalidad
+  - begin: 7200
+    end: 10800
+    delta_vph:
+      E2W: 100    # 300+100=400 vph
+      E2N: 75     # 250+75=325 vph
+      S2N: 100    # 300+100=400 vph
+      S2W: 75     # 250+75=325 vph
+
+
+

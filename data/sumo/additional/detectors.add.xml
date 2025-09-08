@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<additional>
+  <!-- Detectores tipo cámara (E2) ~50 m antes del semáforo en cada carril entrante -->
+  <!-- Frecuencia de muestreo: 1 s. Cada detector escribe su propio archivo de salida. -->
+
+  <!-- Aproximación Este (entrante: E_to_C) -->
+  <laneAreaDetector id="E_in_0" lane="E_to_C_0" pos="65" length="50" freq="1" friendlyPos="true" file="e2_E_in_0.xml"/>
+  <laneAreaDetector id="E_in_1" lane="E_to_C_1" pos="65" length="50" freq="1" friendlyPos="true" file="e2_E_in_1.xml"/>
+
+  <!-- Aproximación Sur (entrante: S_to_C) -->
+  <laneAreaDetector id="S_in_0" lane="S_to_C_0" pos="65" length="50" freq="1" friendlyPos="true" file="e2_S_in_0.xml"/>
+  <laneAreaDetector id="S_in_1" lane="S_to_C_1" pos="65" length="50" freq="1" friendlyPos="true" file="e2_S_in_1.xml"/>
+
+</additional>
+
+

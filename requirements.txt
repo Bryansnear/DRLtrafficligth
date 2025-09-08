@@ -1,0 +1,13 @@
+gymnasium==0.29.1
+stable-baselines3==2.3.2
+numpy>=1.24
+pandas>=2.0
+PyYAML>=6.0
+tensorboard>=2.14
+matplotlib>=3.8
+optuna>=3.6
+
+# Nota: las librerías de SUMO (traci, sumolib) se cargan desde %SUMO_HOME%/tools
+# Instala PyTorch acorde a tu entorno (CPU/CUDA), por ejemplo para CPU:
+# pip install torch --index-url https://download.pytorch.org/whl/cpu
+

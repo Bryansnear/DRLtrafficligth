@@ -1,0 +1,40 @@
+# Perfil de demanda: Hora pico vespertina (5-7 PM)  
+# Flujo principalmente desde el centro hacia residencias (patrón inverso)
+seed: 42
+type: dynamic
+base_vph:
+  E2W: 600  # Este->Oeste: flujo alto base (desde centro)
+  E2N: 300  # Este->Norte: flujo medio base
+  S2N: 300  # Sur->Norte: flujo medio base  
+  S2W: 600  # Sur->Oeste: flujo alto base (desde centro)
+
+windows:
+  # Pre-pico (5:00-5:30 PM)
+  - begin: 0
+    end: 1800
+    delta_vph:
+      E2W: 200     # 600+200=800 vph
+      E2N: 150     # 300+150=450 vph
+      S2N: 100     # 300+100=400 vph
+      S2W: 200     # 600+200=800 vph
+      
+  # Pico vespertino máximo (5:30-6:30 PM)
+  - begin: 1800  
+    end: 5400
+    delta_vph:
+      E2W: 400     # 600+400=1000 vph PICO MÁXIMO
+      E2N: 250     # 300+250=550 vph  
+      S2N: 150     # 300+150=450 vph
+      S2W: 400     # 600+400=1000 vph PICO MÁXIMO
+      
+  # Post-pico gradual (6:30-7:00 PM)
+  - begin: 5400
+    end: 7200
+    delta_vph:
+      E2W: 100     # 600+100=700 vph declive
+      E2N: 75      # 300+75=375 vph
+      S2N: 50      # 300+50=350 vph
+      S2W: 100     # 600+100=700 vph declive
+
+
+

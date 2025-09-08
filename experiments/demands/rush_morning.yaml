@@ -1,0 +1,40 @@
+# Perfil de demanda: Hora pico matutina (7-9 AM)
+# Flujo principal hacia el centro de la ciudad
+seed: 42
+type: dynamic
+base_vph:
+  E2W: 400  # Este->Oeste (hacia centro): base moderado
+  E2N: 200  # Este->Norte (giro): base bajo  
+  S2N: 400  # Sur->Norte (hacia centro): base moderado
+  S2W: 200  # Sur->Oeste (giro): base bajo
+
+windows:
+  # Inicio gradual (7:00-7:30 AM)
+  - begin: 0
+    end: 1800      # 30 min
+    delta_vph: 
+      E2W: 200     # 400+200=600 vph pico temprano
+      E2N: 100     # 200+100=300 vph
+      S2N: 300     # 400+300=700 vph pico temprano  
+      S2W: 50      # 200+50=250 vph
+      
+  # Pico máximo (7:30-8:30 AM)  
+  - begin: 1800
+    end: 5400      # 1 hour
+    delta_vph:
+      E2W: 500     # 400+500=900 vph PICO MÁXIMO
+      E2N: 200     # 200+200=400 vph
+      S2N: 500     # 400+500=900 vph PICO MÁXIMO
+      S2W: 100     # 200+100=300 vph
+      
+  # Declive gradual (8:30-9:00 AM)
+  - begin: 5400
+    end: 7200      # 30 min  
+    delta_vph:
+      E2W: 100     # 400+100=500 vph declive
+      E2N: 50      # 200+50=250 vph
+      S2N: 200     # 400+200=600 vph declive
+      S2W: 25      # 200+25=225 vph
+
+
+

@@ -1,0 +1,48 @@
+sumo:
+  cfg_path: data/sumo/cfg/four_way_1h.sumo.cfg
+  step_length: 1.0
+  gui: false
+
+control:
+  control_interval: 5            # s
+  min_green: 12                  # s (auto-tuned)
+  yellow: 3                      # s (si se modela)
+  all_red: 1                     # s (si se modela)
+  max_green: 60                  # s (opcional)
+
+detectors:
+  e2_ids: [E_in_0, E_in_1, S_in_0, S_in_1]
+  v_free: 13.9                   # m/s
+  jam_length_thr_m: 20.0
+  e2_capacity_per_lane: 6        # ~50m/7.5m
+
+reward:
+  w_served: 0.3630617103908512
+  w_queue: 0.3677404825669878
+  w_backlog: 0.5933976556256304
+  w_switch: 0.12148047982044179
+  w_spill: 0.25644401789687366
+  kappa_backlog: 10              # escala de normalización de backlog
+  sat_headway_s: 2.0            # s/veh (aprox. saturación), para normalizar 'served'
+
+ppo:
+  policy: MlpPolicy
+  lr: 0.0003
+  gamma: 0.99
+  n_steps: 2048
+  batch_size: 64
+  clip_range: 0.2
+  ent_coef: 0.01
+
+train:
+  max_episode_steps: 360        # 30 min a ΔTc=5s
+  total_timesteps: 20000        # ejemplo inicial
+  total_timesteps: 10000        # corrida rápida inicial
+  eval_freq: 10000              # evaluar 1 vez al final
+  n_envs: 1
+
+seeds:
+  numpy: 42
+  torch: 42
+  env: 42
+
