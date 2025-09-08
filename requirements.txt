@@ -6,8 +6,10 @@ PyYAML>=6.0
 tensorboard>=2.14
 matplotlib>=3.8
 optuna>=3.6
+tabulate>=0.9.0
 
 # Nota: las librerías de SUMO (traci, sumolib) se cargan desde %SUMO_HOME%/tools
+# Para instalar todas las dependencias: pip install -r requirements.txt
 # Instala PyTorch acorde a tu entorno (CPU/CUDA), por ejemplo para CPU:
 # pip install torch --index-url https://download.pytorch.org/whl/cpu
 

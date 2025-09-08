@@ -1,3 +1,0 @@
-model,config_type,domain,total_served,throughput_veh_per_min,total_switches,switch_rate,avg_queue,avg_reward,spill_rate,duration_min
-PPO Especialista (Fijo),Fixed,Fixed Demand,101.0,37.875,20,1.0,2.15,-0.04247982942375106,0.0,2.6666666666666665
-PPO Generalista (Variable),Variable,Fixed Demand,146.0,36.5,19,0.95,3.45,0.3140506301958782,0.0,4.0

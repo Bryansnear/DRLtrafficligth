@@ -1,0 +1,13 @@
+config_used: experiments/configs/ultimate_optimized.yaml
+model_name: ppo_production_100k
+optimization_source:
+  best_checkpoint_idx: 0
+  best_score_global: 11.15
+  best_trial_number: 2
+  note: Parameters from trial 2 with best checkpoint score 11.150000
+  optimization_time_hours: 1.0118064657847086
+  timestamp: '2025-09-07 14:31:55'
+  trials_completed: 19
+total_timesteps: 100000
+training_completed: true
+used_optimized_hyperparams: true

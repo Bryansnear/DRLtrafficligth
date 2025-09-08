@@ -475,20 +475,38 @@ def main():
         'note': f'Parameters from trial {best_trial_global.number} with best checkpoint score {best_score_global:.6f}'
     }
     
-    # Guardar configuración ultimate
-    ultimate_config_path = os.path.join("experiments", "configs", "ultimate_optimized.yaml")
+    # LIMPIAR archivos antiguos antes de guardar el nuevo
+    config_dir = os.path.join("experiments", "configs")
+    
+    # Eliminar configuraciones optimizadas anteriores
+    old_configs = [
+        "ultimate_optimized.yaml",
+        "ultimate_best_checkpoint.yaml", 
+        "ultimate_BEST_config.yaml",
+        "variable_demand_optimized.yaml"
+    ]
+    
+    for old_config in old_configs:
+        old_path = os.path.join(config_dir, old_config)
+        if os.path.exists(old_path):
+            os.remove(old_path)
+            print(f"🗑️  Eliminado: {old_config}")
+    
+    # Eliminar archivos .pkl antiguos
+    for file in os.listdir("."):
+        if file.endswith(".pkl"):
+            os.remove(file)
+            print(f"🗑️  Eliminado: {file}")
+    
+    # Guardar SOLO la nueva mejor configuración
+    ultimate_config_path = os.path.join("experiments", "configs", "best_optimized.yaml")
     with open(ultimate_config_path, 'w', encoding='utf-8') as f:
         yaml.dump(ultimate_cfg, f, default_flow_style=False, indent=2)
     
-    print(f"\n💾 Configuración ultimate guardada en: {ultimate_config_path}")
+    print(f"\n💾 MEJOR configuración guardada en: {ultimate_config_path}")
+    print(f"✅ Score: {best_score_global:.6f}")
+    print(f"🧹 Archivos antiguos eliminados automáticamente")
     
-    # Guardar study completo
-    import pickle
-    study_path = "ultimate_autotuning_study.pkl"
-    with open(study_path, "wb") as f:
-        pickle.dump(study, f)
-    
-    print(f"📁 Study completo guardado en: {study_path}")
     print(f"\n🚀 Siguiente paso:")
     print(f"   python scripts/ultimate_training.py --config {ultimate_config_path}")
     

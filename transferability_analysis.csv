@@ -1,5 +1,0 @@
-Modelo,Entrenado_en,Evaluado_en,Throughput,Colas,Cambios_Rate,Recompensa,Transfer_Type
-Especialista (Fijo),Demanda Fija,Demanda Fija,37.9,2.15,1.0,-0.042,In-Domain
-Especialista (Fijo),Demanda Fija,Demanda Variable,46.1,7.56,1.0,-0.368,Cross-Domain
-Generalista (Variable),Demanda Variable,Demanda Fija,36.5,3.45,0.95,0.314,Cross-Domain
-Generalista (Variable),Demanda Variable,Demanda Variable,46.3,7.5,0.92,-0.347,In-Domain

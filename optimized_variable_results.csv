@@ -1,7 +1,0 @@
-scenario,demand_profile,total_served,throughput_veh_per_min,total_switches,switch_rate,avg_queue,avg_reward,spill_rate,duration_min
-Pico Matutino,experiments\demands\rush_morning.yaml,95.0,47.5,14,0.9333333333333333,7.8,-0.3719079122935018,0.2,2.0
-Pico Vespertino,experiments\demands\rush_evening.yaml,90.0,45.0,14,0.9333333333333333,8.666666666666666,-0.4397723231578359,0.2,2.0
-Mediodia,experiments\demands\midday_moderate.yaml,94.0,47.0,13,0.8666666666666667,6.933333333333334,-0.3171948884280151,0.2,2.0
-Valle Nocturno,experiments\demands\off_peak_low.yaml,92.0,46.0,15,1.0,3.466666666666667,-0.08967180112341931,0.0,2.0
-AM/PM Dinamico,experiments\demands\peak_am_pm.yaml,93.0,46.5,13,0.8666666666666667,8.466666666666667,-0.42093989735630416,0.4,2.0
-Estatico Medio,experiments\demands\static_medium.yaml,92.0,46.0,15,1.0,9.666666666666666,-0.5220939157405964,0.2,2.0
