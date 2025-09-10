@@ -1,0 +1,48 @@
+sumo:
+  cfg_path: data/sumo/cfg/four_way_1h.sumo.cfg
+  step_length: 1.0
+  gui: false
+control:
+  control_interval: 8
+  min_green: 20  # 20 segundos mínimo para seguridad peatonal
+  yellow: 3
+  all_red: 2     # 2 segundos de rojo total para mayor seguridad
+  max_green: 60
+detectors:
+  e2_ids:
+  - E_in_0
+  - E_in_1
+  - S_in_0
+  - S_in_1
+  v_free: 13.9
+  jam_length_thr_m: 20.0
+  e2_capacity_per_lane: 6
+reward:
+  w_served: 0.25
+  w_queue: 0.40
+  w_backlog: 0.30
+  w_switch: 0.15    # Penalizar más los cambios frecuentes
+  w_spill: 0.20
+  kappa_backlog: 10
+  sat_headway_s: 2.5    # Incluye tiempo de arranque (~0.5s extra)
+ppo:
+  policy: MlpPolicy
+  lr: 0.0003
+  gamma: 0.99
+  n_steps: 2048
+  batch_size: 64
+  clip_range: 0.2
+  ent_coef: 0.01
+train:
+  max_episode_steps: 360
+  total_timesteps: 100000
+  eval_freq: 10000
+  n_envs: 1
+seeds:
+  numpy: 42
+  torch: 42
+  env: 42
+# Configuración con tiempos seguros para peatones
+# min_green: 20s - Permite cruce seguro de peatones (incluye adultos mayores)
+# w_switch: 0.15 - Penaliza más los cambios frecuentes para estabilidad
+# all_red: 2s - Mayor tiempo de despeje para seguridad
