@@ -1,0 +1,65 @@
+# EXP 9: High max_green + Pressure penalty
+# Goal: Force agent to learn voluntary switching by:
+# 1. Removing max_green crutch (180s instead of 60s)
+# 2. Adding pressure-based penalty (w_unbalance)
+
+sumo:
+  cfg_path: data/sumo/cfg/four_way_1h_variable.sumo.cfg
+  step_length: 1.0
+  gui: false
+
+control:
+  control_interval: 5   # segundos (época de decisión)
+  min_green: 5          # mínimo antes de permitir SWITCH
+  yellow: 3
+  all_red: 1
+  max_green: 180        # INCREASED: 3 min (was 60s) - force agent to learn
+
+# E2 detectors
+detectors:
+  e2_ids: ["E_in_0", "E_in_1", "S_in_0", "S_in_1"]
+  v_free: 15.0
+  jam_length_thr_m: 3.0
+  e2_capacity_per_lane: 12
+
+# Aleatorización
+randomize_sumo_seed: true
+
+# Reward: MaxPressure + Pressure penalty
+reward:
+  w_served: 0.00
+  w_queue: 0.00       # Will use implicit total_queue in _reward
+  w_backlog: 0.00
+  w_switch: 0.00
+  w_spill: 0.00
+  w_empty_hold: 0.00
+  w_invalid_action: 0.00
+  w_unbalance: 0.50   # PENALTY for holding when opposite queue is larger
+  w_select: 0.00
+  kappa_backlog: 12
+  sat_headway_s: 2.0
+
+# PPO optimizado
+ppo:
+  policy: MlpPolicy
+  lr: 0.0003
+  gamma: 0.99
+  n_steps: 2048
+  batch_size: 2048
+  n_epochs: 4
+  clip_range: 0.2
+  ent_coef: 0.10  # High exploration
+
+# Training
+train:
+  max_episode_steps: 256   # Short episodes for completion
+  total_timesteps: 100000  # Test con 100k
+  eval_freq: 25000
+  n_envs: 10
+
+seeds:
+  numpy: 42
+  torch: 42
+  env: 42
+
+description: 'EXP 9: max_green=180s + pressure penalty to force learning'

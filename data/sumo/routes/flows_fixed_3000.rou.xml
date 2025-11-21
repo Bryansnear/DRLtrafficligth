@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <!-- Tipo de vehículo realista -->
+  <vType id='car' accel='1.8' decel='4.5' length='5.0' minGap='2.5' sigma='0.3' maxSpeed='13.9' 
+         speedDev='0.15' speedFactor='0.95' guiShape='passenger' departSpeed='0' />
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       FLUJOS CON NÚMERO FIJO DE VEHÍCULOS
+       Total: 3000 vehículos distribuidos en 1 hora (3600s)
+       Con seed=42, estos vehículos serán EXACTAMENTE los mismos para todos los modelos
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <!-- Flujos BASE continuos - 40% del tráfico (1200 vehículos) -->
+  <!-- Distribuidos equitativamente entre 4 rutas: 300 vehículos c/u -->
+  <flow id='E2N_base' type='car' from='E_to_C' to='C_to_N' begin='0' end='3600' 
+        number='300' departLane='best' departSpeed='random'/>
+  <flow id='E2W_base' type='car' from='E_to_C' to='C_to_W' begin='0' end='3600' 
+        number='300' departLane='best' departSpeed='random'/>
+  <flow id='S2N_base' type='car' from='S_to_C' to='C_to_N' begin='0' end='3600' 
+        number='300' departLane='best' departSpeed='random'/>
+  <flow id='S2W_base' type='car' from='S_to_C' to='C_to_W' begin='0' end='3600' 
+        number='300' departLane='best' departSpeed='random'/>
+  
+  <!-- Pulsos ESTE - 25% del tráfico (750 vehículos) -->
+  <flow id='E2N_pulse1' type='car' from='E_to_C' to='C_to_N' begin='150' end='600' 
+        number='150' departLane='best' departSpeed='random'/>
+  <flow id='E2W_pulse2' type='car' from='E_to_C' to='C_to_W' begin='1200' end='1800' 
+        number='200' departLane='best' departSpeed='random'/>
+  <flow id='E2N_pulse3' type='car' from='E_to_C' to='C_to_N' begin='2700' end='3200' 
+        number='180' departLane='best' departSpeed='random'/>
+  <flow id='E2W_pulse4' type='car' from='E_to_C' to='C_to_W' begin='500' end='900' 
+        number='220' departLane='best' departSpeed='random'/>
+  
+  <!-- Pulsos SUR - 25% del tráfico (750 vehículos) -->
+  <flow id='S2N_pulse1' type='car' from='S_to_C' to='C_to_N' begin='400' end='1000' 
+        number='180' departLane='best' departSpeed='random'/>
+  <flow id='S2W_pulse2' type='car' from='S_to_C' to='C_to_W' begin='1600' end='2200' 
+        number='200' departLane='best' departSpeed='random'/>
+  <flow id='S2N_pulse3' type='car' from='S_to_C' to='C_to_N' begin='2900' end='3400' 
+        number='170' departLane='best' departSpeed='random'/>
+  <flow id='S2W_pulse4' type='car' from='S_to_C' to='C_to_W' begin='700' end='1100' 
+        number='200' departLane='best' departSpeed='random'/>
+  
+  <!-- PICOS EXTREMOS - 10% del tráfico (300 vehículos) -->
+  <flow id='E_spike' type='car' from='E_to_C' to='C_to_W' begin='800' end='1100' 
+        number='150' departLane='best' departSpeed='random'/>
+  <flow id='S_spike' type='car' from='S_to_C' to='C_to_N' begin='2200' end='2500' 
+        number='150' departLane='best' departSpeed='random'/>
+  
+  <!-- Total: 300*4 (base) + 750 (ESTE) + 750 (SUR) + 300 (spikes) = 3000 vehículos -->
+</routes>

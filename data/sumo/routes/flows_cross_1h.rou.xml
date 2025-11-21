@@ -1,16 +1,48 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <routes>
-  <vType id='car' accel='2.0' decel='4.5' length='5.0' minGap='2.5' sigma='0.5' maxSpeed='13.9' guiShape='passenger'/>
-  <!-- Solo edges válidos en la red actual: E_to_C, S_to_C (entrantes) y C_to_N, C_to_W (salientes) -->
-  <!-- Este -> Norte (giro a la derecha) -->
-  <flow id='E2N' type='car' from='E_to_C' to='C_to_N' begin='0' end='3600' vehsPerHour='400' departLane='random' departSpeed='max'/>
-
-  <!-- Este -> Oeste (recto) -->
-  <flow id='E2W' type='car' from='E_to_C' to='C_to_W' begin='0' end='3600' vehsPerHour='600' departLane='random' departSpeed='max'/>
-
-  <!-- Sur -> Norte (recto) -->
-  <flow id='S2N' type='car' from='S_to_C' to='C_to_N' begin='0' end='3600' vehsPerHour='600' departLane='random' departSpeed='max'/>
-
-  <!-- Sur -> Oeste (giro a la izquierda) -->
-  <flow id='S2W' type='car' from='S_to_C' to='C_to_W' begin='0' end='3600' vehsPerHour='400' departLane='random' departSpeed='max'/>
+  <!-- Tipo de vehículo realista: aceleración más lenta, salida desde reposo -->
+  <vType id='car' accel='1.8' decel='4.5' length='5.0' minGap='2.5' sigma='0.3' maxSpeed='13.9' 
+         speedDev='0.15' speedFactor='0.95' guiShape='passenger' departSpeed='0' />
+  
+  <!-- FLUJOS ESTOCÁSTICOS Y ALEATORIOS BALANCEADOS -->
+  <!-- Uso de 'probability' para aleatoriedad completa en cada segundo -->
+  <!-- probability = probabilidad por segundo de que aparezca un vehículo -->
+  
+  <!-- Flujos BASE continuos - balanceados entre ESTE y SUR -->
+  <flow id='E2N_base' type='car' from='E_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.10' departLane='best' departSpeed='random'/>
+  <flow id='E2W_base' type='car' from='E_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.10' departLane='best' departSpeed='random'/>
+  <flow id='S2N_base' type='car' from='S_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.10' departLane='best' departSpeed='random'/>
+  <flow id='S2W_base' type='car' from='S_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.10' departLane='best' departSpeed='random'/>
+  
+  <!-- Pulsos ALEATORIOS ESTE - Picos impredecibles -->
+  <flow id='E2N_pulse1' type='car' from='E_to_C' to='C_to_N' begin='150' end='600' 
+        probability='0.08' departLane='best' departSpeed='random'/>
+  <flow id='E2W_pulse2' type='car' from='E_to_C' to='C_to_W' begin='1200' end='1800' 
+        probability='0.12' departLane='best' departSpeed='random'/>
+  <flow id='E2N_pulse3' type='car' from='E_to_C' to='C_to_N' begin='2700' end='3200' 
+        probability='0.09' departLane='best' departSpeed='random'/>
+  
+  <!-- Pulsos ALEATORIOS SUR - Picos impredecibles -->
+  <flow id='S2N_pulse1' type='car' from='S_to_C' to='C_to_N' begin='400' end='1000' 
+        probability='0.11' departLane='best' departSpeed='random'/>
+  <flow id='S2W_pulse2' type='car' from='S_to_C' to='C_to_W' begin='1600' end='2200' 
+        probability='0.10' departLane='best' departSpeed='random'/>
+  <flow id='S2N_pulse3' type='car' from='S_to_C' to='C_to_N' begin='2900' end='3400' 
+        probability='0.13' departLane='best' departSpeed='random'/>
+  
+  <!-- PICOS EXTREMOS aleatorios - Alta demanda impredecible -->
+  <flow id='E_spike' type='car' from='E_to_C' to='C_to_W' begin='800' end='1100' 
+        probability='0.18' departLane='best' departSpeed='random'/>
+  <flow id='S_spike' type='car' from='S_to_C' to='C_to_N' begin='2200' end='2500' 
+        probability='0.18' departLane='best' departSpeed='random'/>
+  
+  <!-- VALLES aleatorios - Baja demanda impredecible -->
+  <flow id='E_valley' type='car' from='E_to_C' to='C_to_N' begin='1900' end='2100' 
+        probability='0.02' departLane='best' departSpeed='random'/>
+  <flow id='S_valley' type='car' from='S_to_C' to='C_to_W' begin='650' end='750' 
+        probability='0.02' departLane='best' departSpeed='random'/>
 </routes>

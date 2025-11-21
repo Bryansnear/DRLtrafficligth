@@ -19,6 +19,7 @@ class EnvConfig:
     min_green: int = 5
     yellow: int = 3
     all_red: int = 1
+    max_green: int = 60
     e2_ids: Sequence[str] = ("E_in_0", "E_in_1", "S_in_0", "S_in_1")
     v_free: float = 13.9
     jam_length_thr_m: float = 20.0
@@ -27,6 +28,8 @@ class EnvConfig:
     tripinfo_output: Optional[str] = None
     demand_profile_path: Optional[str] = None
     dynamic_demand: bool = False
+    sumo_port: Optional[int] = None  # Puerto único para entornos paralelos
+    randomize_sumo_seed: bool = False  # ⭐ Aleatorizar seed de SUMO en cada reset
     # Recompensa
     w_served: float = 0.25
     w_queue: float = 0.40
@@ -35,6 +38,10 @@ class EnvConfig:
     w_spill: float = 0.20
     kappa_backlog: int = 10
     sat_headway_s: float = 2.0  # s/veh a saturación
+    # Pesos adicionales
+    w_invalid_action: float = 0.0
+    w_unbalance: float = 0.0
+    w_select: float = 0.0
 
 
 def ensure_sumo_tools_on_path() -> None:
@@ -64,6 +71,7 @@ class TrafficLightEnv:
         self._phase_index: Optional[int] = None
         self._last_phase_change: float = 0.0
         self._demand: Optional[DemandManager] = None
+        self._current_sumo_seed: Optional[int] = None  # ⭐ Seed actual de SUMO
 
     def start(self) -> None:
         ensure_sumo_tools_on_path()
@@ -86,6 +94,15 @@ class TrafficLightEnv:
         ]
         if self.cfg.tripinfo_output:
             args += ["--tripinfo-output", self.cfg.tripinfo_output]
+        
+        # Usar puerto único si está especificado
+        if self.cfg.sumo_port is not None:
+            args += ["--remote-port", str(self.cfg.sumo_port)]
+        
+        # ⭐ Agregar seed aleatorio si está habilitado
+        if self._current_sumo_seed is not None:
+            args += ["--seed", str(self._current_sumo_seed)]
+        
         traci.start(args, label=self._label)
         self._traci = traci
         traci.switch(self._label)
@@ -109,10 +126,19 @@ class TrafficLightEnv:
         if self._traci is not None:
             try:
                 self._traci.switch(self._label)
-                self._traci.close(False)
+                # Intentar cerrar limpiamente
+                try:
+                    self._traci.close()
+                except Exception:
+                    # Si falla close normal, intentar close(False)
+                    try:
+                        self._traci.close(False)
+                    except Exception:
+                        pass
             except Exception:
                 pass
-            self._traci = None
+            finally:
+                self._traci = None
 
     def step_until(self, until_time: float) -> None:
         assert self._traci is not None
@@ -161,14 +187,14 @@ class TrafficLightEnv:
 
 
 class TrafficLightGymEnv(gym.Env):
-    """Entorno Gym con acción hold(0)/switch(1), observación y recompensa en español.
+    """Entorno Gym con acción hold(0)/switch(1), observación y recompensa mejorada.
 
-    Observación (20):
-      - Por carril (E0,E1,S0,S1): [cola_norm, ocupacion, vel_norm] → 12
+    Observación MEJORADA (24):
+      - Por carril (E0,E1,S0,S1): [cola_norm, ocupacion, vel_norm, backlog_norm] → 16
       - TLS: fase one-hot (2) + tiempo_en_fase_norm (1) → 3
       - Spillback por carril (4) → 4
-      Total: 19; se añade 1 dummy para llegar a 20 si faltara, pero aquí suman 19+1 spill? En realidad son 12+3+4=19,
-      añadimos served_mask_sum (1) para llegar a 20 y ayudar al agente.
+      - served_mask_sum (1) → 1
+      Total: 24 features con información completa del estado
     """
 
     metadata = {"render.modes": []}
@@ -178,12 +204,13 @@ class TrafficLightGymEnv(gym.Env):
         self.cfg = cfg
         self.core = TrafficLightEnv(cfg)
         self.action_space = spaces.Discrete(2)
-        self.observation_space = spaces.Box(low=0.0, high=1.0, shape=(20,), dtype=np.float32)
+        self.observation_space = spaces.Box(low=0.0, high=1.0, shape=(24,), dtype=np.float32)
         # Estado interno
         self._prev_inside: Dict[str, set] = {eid: set() for eid in cfg.e2_ids}
         self._backlog: Dict[str, float] = {eid: 0.0 for eid in cfg.e2_ids}
         self._last_phase_idx: Optional[int] = None
         self._last_switch: int = 0
+        self._phase_elapsed: float = 0.0
 
     def _served_lane_ids(self, phase_idx: int) -> List[str]:
         # 0: verde Este, 2: verde Sur (según red actual)
@@ -199,23 +226,33 @@ class TrafficLightGymEnv(gym.Env):
     def _obs(self) -> np.ndarray:
         feats = self.core.read_e2_features()
         phase, tip = self.core.tls_state()
-        # Por carril en orden fijo
+        # Por carril en orden fijo - AHORA CON BACKLOG
         order = list(self.cfg.e2_ids)
         vec: List[float] = []
+        
+        # Calcular capacidad máxima para normalización del backlog
+        max_backlog = float(self.cfg.kappa_backlog * self.cfg.e2_capacity_per_lane)
+        
         for eid in order:
             f = feats[eid]
-            vec += [f["cola_norm"], f["ocupacion"], f["vel_norm"]]
+            # Normalizar backlog por carril
+            backlog_norm = min(1.0, self._backlog[eid] / max(1e-6, max_backlog))
+            vec += [f["cola_norm"], f["ocupacion"], f["vel_norm"], backlog_norm]
+        
         # TLS
-        one_hot = [1.0, 0.0] if phase in (0, 1) else [0.0, 1.0]  # A(este) vs B(sur), amarillo se agrupa con su verde anterior
+        one_hot = [1.0, 0.0] if phase in (0, 1) else [0.0, 1.0]  # A(este) vs B(sur)
         tip_norm = min(1.0, tip / max(1e-6, float(self.cfg.min_green)))
         vec += one_hot + [tip_norm]
+        
         # Spillback
         for eid in order:
             vec.append(feats[eid]["spill"])
+        
         # served_mask_sum (ayuda a saber quién está en verde)
         served = self._served_lane_ids(phase)
         mask_sum = float(len(served)) / 2.0  # 0, 0.5, 1.0
         vec.append(mask_sum)
+        
         return np.asarray(vec, dtype=np.float32)
 
     def _reward(self, served_cnt: float, queues: Dict[str, float], spills: Dict[str, float], switch_flag: int, phase_idx: int) -> float:
@@ -229,17 +266,47 @@ class TrafficLightGymEnv(gym.Env):
         b_sum = sum(self._backlog.values())
         b_norm = min(1.0, b_sum / float(self.cfg.kappa_backlog * self.cfg.e2_capacity_per_lane * len(queues)))
         sp_sum = sum(spills.values())
+        
+        # Desequilibrio entre grupos (E vs S) normalizado
+        group_e = [eid for eid in self.cfg.e2_ids if eid.startswith("E_")]
+        group_s = [eid for eid in self.cfg.e2_ids if eid.startswith("S_")]
+        backlog_e = sum(self._backlog.get(eid, 0.0) for eid in group_e)
+        backlog_s = sum(self._backlog.get(eid, 0.0) for eid in group_s)
+        denom_backlog = float(self.cfg.kappa_backlog * self.cfg.e2_capacity_per_lane * max(1, len(self.cfg.e2_ids)))
+        unbalance = 0.0
+        if denom_backlog > 0:
+            unbalance = min(1.0, abs(backlog_e - backlog_s) / denom_backlog)
+        
+        # Selección por presión: premiar si el grupo servido tiene mayor backlog relativo
+        selected_backlog = sum(self._backlog.get(eid, 0.0) for eid in served_lanes)
+        other_lanes = [eid for eid in self.cfg.e2_ids if eid not in served_lanes]
+        other_backlog = sum(self._backlog.get(eid, 0.0) for eid in other_lanes)
+        select_pressure = 0.0
+        if denom_backlog > 0:
+            select_pressure = float(np.clip((selected_backlog - other_backlog) / denom_backlog, -1.0, 1.0))
+
         R = (
             + self.cfg.w_served * s_norm
             - self.cfg.w_queue * q_norm
             - self.cfg.w_backlog * b_norm
             - self.cfg.w_switch * float(switch_flag)
             - self.cfg.w_spill * sp_sum
+            # Nuevos términos
+            - self.cfg.w_unbalance * unbalance
+            + self.cfg.w_select * select_pressure
         )
         return float(np.clip(R, -1.0, 1.0))
 
     def reset(self, *, seed: Optional[int] = None, options: Optional[dict] = None):
         super().reset(seed=seed)
+        
+        # ⭐ Generar seed aleatorio para SUMO si está habilitado
+        if self.cfg.randomize_sumo_seed:
+            # Usar np_random del gym environment para reproducibilidad
+            self.core._current_sumo_seed = self.np_random.integers(0, 2**31 - 1)
+        else:
+            self.core._current_sumo_seed = None
+        
         # Reiniciar SUMO
         try:
             self.core.close()
@@ -251,6 +318,7 @@ class TrafficLightGymEnv(gym.Env):
         self._backlog = {eid: 0.0 for eid in self.cfg.e2_ids}
         self._last_phase_idx = self.core.tls_state()[0]
         self._last_switch = 0
+        self._phase_elapsed = 0.0
         # Simular hasta el próximo límite de control para inicializar
         self.core.step_until(self.core._traci.simulation.getTime() + self.cfg.control_interval)
         obs = self._obs()
@@ -260,13 +328,44 @@ class TrafficLightGymEnv(gym.Env):
     def step(self, action: int):
         # Decidir cambio (hold/switch) con min_green
         switch_flag = 0
-        phase, tip = self.core.tls_state()
-        if action == 1 and tip >= self.cfg.min_green and phase in (0, 2):
-            # Cambiar entre 0 ↔ 2 (omitimos fases amarillas en esta primera versión)
-            target = 2 if phase == 0 else 0
+        phase, _ = self.core.tls_state()
+        elapsed = self._phase_elapsed if phase in (0, 2) else 0.0
+        caution_duration = float(self.cfg.yellow + self.cfg.all_red)
+        # Forzar cambio si se excede max_green o si la acción lo solicita (respetando min_green)
+        do_switch = False
+        invalid_action_flag = 0
+        if phase in (0, 2):
+            if elapsed >= self.cfg.max_green:
+                do_switch = True
+            elif action == 1 and elapsed >= self.cfg.min_green:
+                do_switch = True
+            elif action == 1 and elapsed < self.cfg.min_green:
+                # Penalizar intento de cambio antes de min_green
+                invalid_action_flag = 1
+
+        if do_switch:
+            # Secuencia segura: amarillo (fase 1 o 3) durante cfg.yellow, luego verde destino (0 o 2)
+            target_green = 2 if phase == 0 else 0
+            yellow_phase = 1 if phase in (0, 1) else 3
             try:
-                self.core._traci.trafficlight.setPhase(self.core._tls_id, target)
+                # Forzar amarillo
+                self.core._traci.trafficlight.setPhase(self.core._tls_id, yellow_phase)
+                self.core._traci.trafficlight.setPhaseDuration(self.core._tls_id, 1e6)
+                # Avanzar simulación durante el tiempo de amarillo + all_red
+                end_caution = self.core._traci.simulation.getTime() + caution_duration
+                while self.core._traci.simulation.getTime() < end_caution:
+                    self.core._traci.simulationStep()
+                # Cambiar a la fase verde objetivo
+                self.core._traci.trafficlight.setPhase(self.core._tls_id, target_green)
+                self.core._traci.trafficlight.setPhaseDuration(self.core._tls_id, 1e6)
                 switch_flag = 1
+            except Exception:
+                pass
+        else:
+            # Mantener la fase actual fijando explícitamente duración del verde
+            try:
+                self.core._traci.trafficlight.setPhase(self.core._tls_id, phase)
+                self.core._traci.trafficlight.setPhaseDuration(self.core._tls_id, 1e6)
             except Exception:
                 pass
 
@@ -288,6 +387,15 @@ class TrafficLightGymEnv(gym.Env):
                 acc_entered[eid] += entered
                 acc_exited[eid] += exited
                 self._prev_inside[eid] = now_inside
+
+        new_phase, _ = self.core.tls_state()
+        if new_phase in (0, 2):
+            if switch_flag:
+                self._phase_elapsed = max(0.0, self.cfg.control_interval - caution_duration)
+            else:
+                self._phase_elapsed += self.cfg.control_interval
+        else:
+            self._phase_elapsed = 0.0
         # Al cierre del intervalo
         feats = self.core.read_e2_features()
         queues = {eid: self.core._traci.lanearea.getLastStepHaltingNumber(eid) for eid in self.cfg.e2_ids}
@@ -298,7 +406,7 @@ class TrafficLightGymEnv(gym.Env):
             self._backlog[eid] = max(0.0, self._backlog[eid])
         served_cnt = float(sum(acc_exited.values()))
         phase_now, _ = self.core.tls_state()
-        reward = self._reward(served_cnt, queues, spills, switch_flag, phase_now)
+        reward = self._reward(served_cnt, queues, spills, switch_flag, phase_now) - self.cfg.w_invalid_action * float(invalid_action_flag)
         obs = self._obs()
         terminated = False
         truncated = False
@@ -310,6 +418,14 @@ class TrafficLightGymEnv(gym.Env):
         self._last_phase_idx = phase_now
         self._last_switch = switch_flag
         return obs, reward, terminated, truncated, info
+    
+    def close(self) -> None:
+        """Cierra el environment y la conexión SUMO de forma limpia"""
+        if hasattr(self, 'core') and self.core is not None:
+            try:
+                self.core.close()
+            except Exception:
+                pass
 
 if __name__ == "__main__":
     # Demo mínima: correr 15s y leer una observación
@@ -325,5 +441,3 @@ if __name__ == "__main__":
             print(k, v)
     finally:
         env.close()
-
-

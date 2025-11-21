@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <!-- ESCENARIO 4: ALEATORIO (patrones impredecibles) -->
+  <vType id='car' accel='1.8' decel='4.5' length='5.0' minGap='2.5' sigma='0.3' maxSpeed='13.9' 
+         speedDev='0.15' speedFactor='0.95' guiShape='passenger' departSpeed='0' />
+  
+  <!-- Flujos BASE aleatorios (toda la hora) -->
+  <flow id='E2N_base' type='car' from='E_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.12' departLane='best' departSpeed='random'/>
+  <flow id='E2W_base' type='car' from='E_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.18' departLane='best' departSpeed='random'/>
+  <flow id='S2N_base' type='car' from='S_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.16' departLane='best' departSpeed='random'/>
+  <flow id='S2W_base' type='car' from='S_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.11' departLane='best' departSpeed='random'/>
+  
+  <!-- Picos ALEATORIOS en diferentes momentos -->
+  <flow id='E_spike1' type='car' from='E_to_C' to='C_to_N' begin='200' end='800' 
+        probability='0.22' departLane='best' departSpeed='random'/>
+  <flow id='S_spike1' type='car' from='S_to_C' to='C_to_W' begin='1000' end='1600' 
+        probability='0.25' departLane='best' departSpeed='random'/>
+  <flow id='E_spike2' type='car' from='E_to_C' to='C_to_W' begin='2000' end='2500' 
+        probability='0.15' departLane='best' departSpeed='random'/>
+  <flow id='S_spike2' type='car' from='S_to_C' to='C_to_N' begin='2900' end='3400' 
+        probability='0.20' departLane='best' departSpeed='random'/>
+  
+  <!-- Valles aleatorios -->
+  <flow id='E_valley' type='car' from='E_to_C' to='C_to_N' begin='1700' end='1900' 
+        probability='0.03' departLane='best' departSpeed='random'/>
+  <flow id='S_valley' type='car' from='S_to_C' to='C_to_N' begin='2600' end='2800' 
+        probability='0.04' departLane='best' departSpeed='random'/>
+</routes>

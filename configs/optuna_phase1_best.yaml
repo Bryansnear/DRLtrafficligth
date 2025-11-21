@@ -1,0 +1,51 @@
+control:
+  all_red: 2
+  control_interval: 5
+  max_green: 30
+  min_green: 7
+  yellow: 4
+description: REACTIVE RANDOM 500k - Aleatorización de tráfico SUMO fuerza aprendizaje
+  reactivo
+detectors:
+  e2_capacity_per_lane: 6
+  e2_ids:
+  - E_in_0
+  - E_in_1
+  - S_in_0
+  - S_in_1
+  jam_length_thr_m: 20.0
+  v_free: 13.9
+ppo:
+  batch_size: 4096
+  clip_range: 0.2
+  ent_coef: 0.03
+  gamma: 0.99
+  lr: 0.0003
+  n_epochs: 4
+  n_steps: 4096
+  policy: MlpPolicy
+randomize_sumo_seed: false
+reward:
+  kappa_backlog: 12
+  sat_headway_s: 2.0
+  w_backlog: 0.6247061666330408
+  w_invalid_action: 0.2
+  w_queue: 1.381073798675305
+  w_select: 0.5
+  w_served: 1.8656243455856871
+  w_spill: 0.6358931404595721
+  w_switch: 0.00741380814101895
+  w_unbalance: 0.28253390285044544
+seeds:
+  env: 42
+  numpy: 42
+  torch: 42
+sumo:
+  cfg_path: data/sumo/cfg/four_way_1h_variable.sumo.cfg
+  gui: false
+  step_length: 1.0
+train:
+  eval_freq: 25000
+  max_episode_steps: 720
+  n_envs: 8
+  total_timesteps: 200000

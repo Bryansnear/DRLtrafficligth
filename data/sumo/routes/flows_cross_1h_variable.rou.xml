@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <!-- Tipo de vehículo realista -->
+  <vType id='car' accel='2.0' decel='4.5' length='5.0' minGap='2.5' sigma='0.3' maxSpeed='13.9' 
+         speedDev='0.15' speedFactor='0.95' guiShape='passenger'/>
+  
+  <!-- FLUJOS SIMPLIFICADOS Y MÁS DENSOS -->
+  <!-- Mayor probabilidad = más tráfico = decisiones más importantes -->
+  
+  <!-- ESTE → NORTE/OESTE (40% del tráfico total) -->
+  <flow id='E2N' type='car' from='E_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.25' departLane='best' departSpeed='max'/>
+  <flow id='E2W' type='car' from='E_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.25' departLane='best' departSpeed='max'/>
+  
+  <!-- SUR → NORTE/OESTE (40% del tráfico total) -->
+  <flow id='S2N' type='car' from='S_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.25' departLane='best' departSpeed='max'/>
+  <flow id='S2W' type='car' from='S_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.25' departLane='best' departSpeed='max'/>
+  
+  <!-- PICOS DINÁMICOS - Alternan entre ESTE y SUR cada episodio gracias a semilla aleatoria -->
+  <!-- Estos crearán congestión real que el modelo debe gestionar -->
+  <flow id='E_peak' type='car' from='E_to_C' to='C_to_W' begin='900' end='1800' 
+        probability='0.15' departLane='best' departSpeed='max'/>
+  <flow id='S_peak' type='car' from='S_to_C' to='C_to_N' begin='1800' end='2700' 
+        probability='0.15' departLane='best' departSpeed='max'/>
+</routes>

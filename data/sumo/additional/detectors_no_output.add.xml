@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<additional>
+  <!-- Detectores con archivos temporales (para autotuning) -->
+  
+  <!-- Aproximación Este (entrante: E_to_C) -->
+  <laneAreaDetector id="E_in_0" lane="E_to_C_0" pos="65" length="50" freq="1" friendlyPos="true" file="NUL"/>
+  <laneAreaDetector id="E_in_1" lane="E_to_C_1" pos="65" length="50" freq="1" friendlyPos="true" file="NUL"/>
+
+  <!-- Aproximación Sur (entrante: S_to_C) -->
+  <laneAreaDetector id="S_in_0" lane="S_to_C_0" pos="65" length="50" freq="1" friendlyPos="true" file="NUL"/>
+  <laneAreaDetector id="S_in_1" lane="S_to_C_1" pos="65" length="50" freq="1" friendlyPos="true" file="NUL"/>
+
+</additional>
+

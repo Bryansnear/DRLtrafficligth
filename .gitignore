@@ -1,0 +1,85 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+# env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Logs
+logs/tensorboard/*
+!logs/tensorboard/.gitkeep
+logs/eval/*
+!logs/eval/.gitkeep
+*.log
+
+# Models (opcional - descomentar para no subir modelos)
+# models/*.zip
+
+# Outputs
+# outputs/*
+!outputs/.gitkeep
+
+# Registry plots (se regeneran automáticamente)
+registry/plots/*
+!registry/plots/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+check_*.py
+fix_*.py
+
+# SUMO output files
+*.xml.gz
+tripinfo*.xml
+tripinfo*.csv
+
+# Sistema
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json

@@ -1,0 +1,68 @@
+# Configuration for FINAL optimized PPO model
+# Based on Optuna hyperparameter search results (Trial 25)
+# Expected improvement: +3-5% throughput, -40-50% queue vs baseline
+
+sumo:
+  cfg_path: "data/sumo/cfg/four_way_dynamic.sumo.cfg"  # Dynamic scenario
+  step_length: 1.0
+
+control:
+  control_interval: 5
+  min_green: 15        # INCREASED: Allow ~7 vehicles to pass minimum
+  yellow: 3
+  all_red: 1
+  max_green: 180      # Agent decides voluntarily
+
+detectors:
+  e2_ids: ["E_in_0", "E_in_1", "S_in_0", "S_in_1"]
+  v_free: 13.9
+  jam_length_thr_m: 20.0
+  e2_capacity_per_lane: 6
+
+reward:
+  # MaxPressure + Pressure Penalty (optimized)
+  w_served: 0.0   # Disabled for speed
+  w_queue: 1.0    # MaxPressure base
+  w_backlog: 0.0  # Disabled
+  w_switch: 0.0   # No switch penalty
+  w_spill: 0.0    # Disabled
+  w_empty_hold: 0.0
+  w_invalid_action: 0.0
+  
+  # Optimized parameter (from previous Optuna search)
+  w_unbalance: 0.37
+  
+  w_select: 0.0
+  kappa_backlog: 12
+  sat_headway_s: 2.0
+
+# OPTIMIZED PPO HYPERPARAMETERS (from Optuna Trial 25)
+ppo:
+  policy: MlpPolicy
+  lr: 0.000465            # Optuna optimized
+  n_steps: 2048
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.951            # Optuna optimized (was 0.99)
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.0497        # Optuna optimized (was 0.05)
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+
+train:
+  total_timesteps: 1000000  # 1M for deep learning
+  max_episode_steps: 512    # Longer episodes for dynamic scenario
+  eval_freq: 50000
+  n_envs: 8                 # Parallel training
+
+seeds:
+  numpy: 42
+  torch: 42
+  env: 42
+
+# Enable randomization for robustness
+randomize_sumo_seed: true
+
+description: 'OPTIMIZED FINAL: Optuna-tuned PPO (lr=4.65e-4, gamma=0.951, ent=0.05, net=[256,128,64])'
+

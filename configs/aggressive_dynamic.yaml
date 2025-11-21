@@ -1,0 +1,58 @@
+sumo:
+  cfg_path: data/sumo/cfg/four_way_1h_variable.sumo.cfg
+  step_length: 1.0
+  gui: false
+
+control:
+  control_interval: 5
+  min_green: 6
+  yellow: 4
+  all_red: 2
+  max_green: 55
+
+detectors:
+  e2_ids:
+  - E_in_0
+  - E_in_1
+  - S_in_0
+  - S_in_1
+  v_free: 13.9
+  jam_length_thr_m: 20.0
+  e2_capacity_per_lane: 6
+
+randomize_sumo_seed: true
+
+reward:
+  w_served: 1.8
+  w_queue: 1.0
+  w_backlog: 0.6
+  w_switch: 0.001
+  w_spill: 1.2
+  w_invalid_action: 0.2
+  w_unbalance: 0.3
+  w_select: 0.5
+  kappa_backlog: 12
+  sat_headway_s: 2.0
+
+ppo:
+  policy: MlpPolicy
+  lr: 0.0003
+  gamma: 0.99
+  n_steps: 4096
+  batch_size: 4096
+  n_epochs: 4
+  clip_range: 0.2
+  ent_coef: 0.03
+
+train:
+  max_episode_steps: 720
+  total_timesteps: 1000000
+  eval_freq: 25000
+  n_envs: 12
+
+seeds:
+  numpy: 42
+  torch: 42
+  env: 42
+
+description: 'AGGRESSIVE DYNAMIC - 1M timesteps, demanda aleatoria con penalización de spillback alta'

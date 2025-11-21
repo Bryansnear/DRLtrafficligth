@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Constant low flow: 1 vehicle/min from each direction (E, S) -->
+<!-- Total: 60 vehicles over 1 hour simulation -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Vehicle type -->
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="13.89" guiShape="passenger"/>
+    
+    <!-- East to West traffic: 1 veh/min = 60 vehicles -->
+    <flow id="flow_E_W" type="car" from="E_to_C" to="C_to_W" begin="0" end="3600" number="60" departLane="best" departSpeed="max"/>
+    
+    <!-- South to North traffic: 1 veh/min = 60 vehicles -->
+    <flow id="flow_S_N" type="car" from="S_to_C" to="C_to_N" begin="0" end="3600" number="60" departLane="best" departSpeed="max"/>
+</routes>

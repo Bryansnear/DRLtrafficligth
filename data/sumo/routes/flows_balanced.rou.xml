@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <!-- ESCENARIO 3: BALANCEADO (flujos iguales) -->
+  <vType id='car' accel='1.8' decel='4.5' length='5.0' minGap='2.5' sigma='0.3' maxSpeed='13.9' 
+         speedDev='0.15' speedFactor='0.95' guiShape='passenger' departSpeed='0' />
+  
+  <!-- ESTE y SUR: Flujos BASE IGUALES (toda la hora) -->
+  <flow id='E2N_base' type='car' from='E_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.15' departLane='best' departSpeed='random'/>
+  <flow id='E2W_base' type='car' from='E_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.15' departLane='best' departSpeed='random'/>
+  <flow id='S2N_base' type='car' from='S_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.15' departLane='best' departSpeed='random'/>
+  <flow id='S2W_base' type='car' from='S_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.15' departLane='best' departSpeed='random'/>
+  
+  <!-- Pulsos SIMÉTRICOS en diferentes momentos -->
+  <flow id='E2N_pulse1' type='car' from='E_to_C' to='C_to_N' begin='400' end='1000' 
+        probability='0.10' departLane='best' departSpeed='random'/>
+  <flow id='S2N_pulse1' type='car' from='S_to_C' to='C_to_N' begin='400' end='1000' 
+        probability='0.10' departLane='best' departSpeed='random'/>
+  
+  <flow id='E2W_pulse1' type='car' from='E_to_C' to='C_to_W' begin='1600' end='2200' 
+        probability='0.08' departLane='best' departSpeed='random'/>
+  <flow id='S2W_pulse1' type='car' from='S_to_C' to='C_to_W' begin='1600' end='2200' 
+        probability='0.08' departLane='best' departSpeed='random'/>
+  
+  <flow id='E2N_pulse2' type='car' from='E_to_C' to='C_to_N' begin='2800' end='3400' 
+        probability='0.12' departLane='best' departSpeed='random'/>
+  <flow id='S2N_pulse2' type='car' from='S_to_C' to='C_to_N' begin='2800' end='3400' 
+        probability='0.12' departLane='best' departSpeed='random'/>
+</routes>

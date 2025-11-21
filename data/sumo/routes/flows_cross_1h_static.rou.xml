@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <!-- Tipo de vehículo realista -->
+  <vType id='car' accel='1.8' decel='4.5' length='5.0' minGap='2.5' sigma='0.3' maxSpeed='13.9' 
+         speedDev='0.15' speedFactor='0.95' guiShape='passenger' departSpeed='0' />
+  
+  <!-- FLUJOS FIJOS Y ESTÁTICOS (para comparación) -->
+  <!-- Flujos constantes durante toda la hora -->
+  
+  <!-- Aproximación Este: 450 veh/h constante -->
+  <flow id='E2N_static' type='car' from='E_to_C' to='C_to_N' begin='0' end='3600' vehsPerHour='450' departLane='best' departSpeed='random'/>
+  <flow id='E2W_static' type='car' from='E_to_C' to='C_to_W' begin='0' end='3600' vehsPerHour='450' departLane='best' departSpeed='random'/>
+  
+  <!-- Aproximación Sur: 450 veh/h constante -->
+  <flow id='S2N_static' type='car' from='S_to_C' to='C_to_N' begin='0' end='3600' vehsPerHour='450' departLane='best' departSpeed='random'/>
+  <flow id='S2W_static' type='car' from='S_to_C' to='C_to_W' begin='0' end='3600' vehsPerHour='450' departLane='best' departSpeed='random'/>
+</routes>
+
+
+
+
+
+
+
+
+
+
+
+
+

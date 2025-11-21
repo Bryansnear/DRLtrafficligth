@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="15.0" guiShape="passenger"/>
+
+    <!-- Routes based on network topology (E_to_C, S_to_C) -->
+    <route id="r_S_N" edges="S_to_C C_to_N"/>
+    <route id="r_S_W" edges="S_to_C C_to_W"/>
+    <route id="r_E_W" edges="E_to_C C_to_W"/>
+    <route id="r_E_N" edges="E_to_C C_to_N"/>
+
+    <!-- Phase 1: Warmup (0-15 min) - Medium Balanced -->
+    <flow id="S_N_warmup" type="car" route="r_S_N" begin="0" end="900" probability="0.13" departLane="best" departSpeed="max"/>
+    <flow id="S_W_warmup" type="car" route="r_S_W" begin="0" end="900" probability="0.03" departLane="best" departSpeed="max"/>
+    <flow id="E_W_warmup" type="car" route="r_E_W" begin="0" end="900" probability="0.13" departLane="best" departSpeed="max"/>
+    <flow id="E_N_warmup" type="car" route="r_E_N" begin="0" end="900" probability="0.03" departLane="best" departSpeed="max"/>
+
+    <!-- Phase 2: South Peak (15-30 min) - High S, Low E -->
+    <flow id="S_N_peak" type="car" route="r_S_N" begin="900" end="1800" probability="0.40" departLane="best" departSpeed="max"/>
+    <flow id="S_W_peak" type="car" route="r_S_W" begin="900" end="1800" probability="0.10" departLane="best" departSpeed="max"/>
+    <flow id="E_W_low" type="car" route="r_E_W" begin="900" end="1800" probability="0.06" departLane="best" departSpeed="max"/>
+    <flow id="E_N_low" type="car" route="r_E_N" begin="900" end="1800" probability="0.02" departLane="best" departSpeed="max"/>
+
+    <!-- Phase 3: Transition (30-40 min) - Medium Balanced -->
+    <flow id="S_N_trans" type="car" route="r_S_N" begin="1800" end="2400" probability="0.13" departLane="best" departSpeed="max"/>
+    <flow id="S_W_trans" type="car" route="r_S_W" begin="1800" end="2400" probability="0.03" departLane="best" departSpeed="max"/>
+    <flow id="E_W_trans" type="car" route="r_E_W" begin="1800" end="2400" probability="0.13" departLane="best" departSpeed="max"/>
+    <flow id="E_N_trans" type="car" route="r_E_N" begin="1800" end="2400" probability="0.03" departLane="best" departSpeed="max"/>
+
+    <!-- Phase 4: East Peak (40-55 min) - High E, Low S -->
+    <flow id="S_N_low2" type="car" route="r_S_N" begin="2400" end="3300" probability="0.06" departLane="best" departSpeed="max"/>
+    <flow id="S_W_low2" type="car" route="r_S_W" begin="2400" end="3300" probability="0.02" departLane="best" departSpeed="max"/>
+    <flow id="E_W_peak2" type="car" route="r_E_W" begin="2400" end="3300" probability="0.40" departLane="best" departSpeed="max"/>
+    <flow id="E_N_peak2" type="car" route="r_E_N" begin="2400" end="3300" probability="0.10" departLane="best" departSpeed="max"/>
+
+    <!-- Phase 5: Bursts (55-60 min) - High variability -->
+    <flow id="S_burst" type="car" route="r_S_N" begin="3300" end="3600" probability="0.25" departLane="best" departSpeed="max"/>
+    <flow id="E_burst" type="car" route="r_E_W" begin="3300" end="3600" probability="0.25" departLane="best" departSpeed="max"/>
+
+</routes>

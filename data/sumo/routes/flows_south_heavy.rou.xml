@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <!-- ESCENARIO 2: SUR DOMINANTE (doble flujo que ESTE) -->
+  <vType id='car' accel='1.8' decel='4.5' length='5.0' minGap='2.5' sigma='0.3' maxSpeed='13.9' 
+         speedDev='0.15' speedFactor='0.95' guiShape='passenger' departSpeed='0' />
+  
+  <!-- ESTE: Flujo BASE BAJO (toda la hora) -->
+  <flow id='E2N_base' type='car' from='E_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.10' departLane='best' departSpeed='random'/>
+  <flow id='E2W_base' type='car' from='E_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.10' departLane='best' departSpeed='random'/>
+  
+  <!-- SUR: Flujo BASE ALTO (toda la hora) -->
+  <flow id='S2N_base' type='car' from='S_to_C' to='C_to_N' begin='0' end='3600' 
+        probability='0.20' departLane='best' departSpeed='random'/>
+  <flow id='S2W_base' type='car' from='S_to_C' to='C_to_W' begin='0' end='3600' 
+        probability='0.20' departLane='best' departSpeed='random'/>
+  
+  <!-- Pulsos ESTE DÉBILES en diferentes momentos -->
+  <flow id='E2N_pulse1' type='car' from='E_to_C' to='C_to_N' begin='500' end='1100' 
+        probability='0.05' departLane='best' departSpeed='random'/>
+  <flow id='E2W_pulse1' type='car' from='E_to_C' to='C_to_W' begin='2200' end='2800' 
+        probability='0.06' departLane='best' departSpeed='random'/>
+  
+  <!-- Pulsos SUR FUERTES en diferentes momentos -->
+  <flow id='S2N_pulse1' type='car' from='S_to_C' to='C_to_N' begin='400' end='1000' 
+        probability='0.15' departLane='best' departSpeed='random'/>
+  <flow id='S2W_pulse1' type='car' from='S_to_C' to='C_to_W' begin='1400' end='2000' 
+        probability='0.12' departLane='best' departSpeed='random'/>
+  <flow id='S2N_pulse2' type='car' from='S_to_C' to='C_to_N' begin='2700' end='3300' 
+        probability='0.18' departLane='best' departSpeed='random'/>
+</routes>

@@ -1,0 +1,66 @@
+# CONFIGURACIÓN FINAL - ESCENARIO DINÁMICO
+# Objetivo: Entrenar agente robusto con tráfico variable (Olas N-S / E-O)
+# Fecha: 2025-11-20
+
+sumo:
+  cfg_path: data/sumo/cfg/four_way_dynamic.sumo.cfg  # NUEVO escenario dinámico
+  step_length: 1.0
+  gui: false
+
+control:
+  control_interval: 5
+  min_green: 5
+  yellow: 3
+  all_red: 1
+  max_green: 180        # 3 min para permitir decisiones voluntarias
+
+detectors:
+  e2_ids: ["E_in_0", "E_in_1", "S_in_0", "S_in_1"]
+  v_free: 15.0
+  jam_length_thr_m: 3.0
+  e2_capacity_per_lane: 12
+
+# Aleatorización
+randomize_sumo_seed: true  # Importante para generalizar
+
+# Reward: MaxPressure + Pressure Penalty (Optimizado)
+reward:
+  w_served: 0.00      # 0.0 para velocidad máxima en training
+  w_queue: 0.00       # Implícito en _reward
+  w_backlog: 0.00
+  w_switch: 0.00
+  w_spill: 0.00
+  w_empty_hold: 0.00
+  w_invalid_action: 0.00
+  
+  # EL PARÁMETRO CLAVE (Optimizado con Optuna)
+  w_unbalance: 0.37   # Valor ganador (Trial 0 Fase 2)
+  
+  w_select: 0.00
+  kappa_backlog: 12
+  sat_headway_s: 2.0
+
+# PPO optimizado
+ppo:
+  policy: MlpPolicy
+  lr: 0.0003
+  gamma: 0.99
+  n_steps: 2048
+  batch_size: 2048
+  n_epochs: 4
+  clip_range: 0.2
+  ent_coef: 0.05  # Reducido un poco para explotación final (era 0.10)
+
+# Training Largo
+train:
+  max_episode_steps: 512   # Episodios un poco más largos para ver olas completas
+  total_timesteps: 500000  # 500k para convergencia sólida
+  eval_freq: 50000
+  n_envs: 8                # 8 envs para no saturar CPU con métricas off
+
+seeds:
+  numpy: 42
+  torch: 42
+  env: 42
+
+description: 'FINAL DYNAMIC: MaxPressure + Unbalance Penalty en Tráfico Variable'
