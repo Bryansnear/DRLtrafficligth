@@ -4,13 +4,11 @@
 **Escuela de Ciencias Matemáticas y Computacionales**  
 **Maestría en Inteligencia Artificial**
 
-**Título:** _Control Adaptativo de Semáforos mediante Deep Reinforcement Learning y Simulación en SUMO_
+**Título:** _Optimización de Tiempos de Espera en Intersecciones mediante Aprendizaje por Refuerzo Profundo y Simulación_
 
 **Autor:** Bryan Ortega  
-**Director:** [Nombre del tutor]  
-**Fecha:** [Mes, Año]
-
----
+**Director:** Tito Rolando Armas Andrade  
+**Fecha:** Noviembre, 2025
 
 # Resumen
 
@@ -22,8 +20,6 @@ Los resultados muestran una **reducción aproximada del 60% en la longitud prome
 
 **Palabras clave:** semáforos inteligentes, aprendizaje por refuerzo, PPO, SUMO, tráfico urbano.
 
----
-
 # Abstract
 
 This thesis presents the development of an adaptive traffic signal controller based on **Deep Reinforcement Learning (DRL)** using the **Proximal Policy Optimization (PPO)** algorithm integrated with the microscopic traffic simulator **SUMO**. The main objective is to reduce urban congestion by dynamically optimizing signal timings in a high-demand intersection.
@@ -33,8 +29,6 @@ The agent learns to manage highly variable traffic conditions through a reward f
 Results show an **approximate 60% reduction in average queue length** and a **4.5% increase in throughput** compared to a fixed-time controller. These findings demonstrate the effectiveness of combining DRL and SUMO to improve urban mobility. Limitations and future work directions are discussed, including multi-agent control and perception via computer vision.
 
 **Keywords:** intelligent traffic lights, reinforcement learning, PPO, SUMO, urban mobility.
-
----
 
 # Estructura de la Tesis
 
@@ -93,18 +87,20 @@ El análisis del tráfico vehicular se fundamenta en la teoría del flujo vehicu
 **Flujo ($q$):** Se define como la tasa a la cual los vehículos pasan por un punto específico de la vía durante un intervalo de tiempo. Se expresa comúnmente en vehículos por hora (veh/h) [1], [5].
 $$ q = \frac{N}{T} $$
 
+Donde $N$ es el número de vehículos que pasan por el punto y $T$ es el intervalo de tiempo de observación.
+
 **Densidad ($k$):** Representa el número de vehículos ocupando un segmento de longitud unitaria de la vía en un instante dado. Se expresa en vehículos por kilómetro (veh/km) [5].
 
 **Velocidad media espacial ($v_s$):** Es la media armónica de las velocidades de los vehículos que pasan por un punto. La relación fundamental del tráfico establece que [1]:
 $$ q = k \cdot v_s $$
 
+Donde $q$ es el flujo, $k$ es la densidad y $v_s$ es la velocidad media espacial.
+
 **Diagrama Fundamental:** Describe la relación no lineal entre flujo y densidad. A medida que la densidad aumenta, el flujo crece hasta alcanzar una capacidad máxima ($q_{max}$), punto tras el cual el flujo colapsa debido a la congestión, entrando en un régimen inestable [5], [6].
 
 **Longitud de Cola:** Métrica crítica para el control semafórico, definida como el número de vehículos detenidos o avanzando a una velocidad inferior a un umbral (e.g., 5 km/h) en una aproximación. Minimizar esta variable es el objetivo principal de la mayoría de los sistemas de control adaptativo [3], [6].
 
----
-
-### 2.2 SUMO: Características y Arquitectura
+**Fase Semafórica:** Intervalo de tiempo durante el cual un conjunto de movimientos vehiculares (e.g., Norte-Sur) tiene derecho de paso (luz verde), mientras que los movimientos conflictivos se mantienen detenidos (luz roja). Un ciclo semafórico completo se compone de una secuencia ordenada de estas fases [5].
 
 ### 1.2 SUMO: Características y Arquitectura
 
@@ -113,32 +109,15 @@ $$ q = k \cdot v_s $$
 **Modelos de Seguimiento (Car-Following):** SUMO implementa por defecto el modelo de Krauss, una variante estocástica que garantiza una conducción libre de colisiones manteniendo una distancia de seguridad basada en la velocidad del vehículo líder [49].
 $$ v\_{safe} = v_l(t) + \frac{g(t) - v_l(t) \tau}{ \frac{\bar{v}}{2b} + \tau } $$
 
+Donde $v_{safe}$ es la velocidad segura calculada, $v_l(t)$ es la velocidad del vehículo líder en el tiempo $t$, $g(t)$ es la brecha (gap) con el líder, $\tau$ es el tiempo de reacción del conductor, $b$ es la desaceleración máxima posible y $\bar{v}$ es la velocidad media promedio de los vehículos.
+
 **TraCI (Traffic Control Interface):** Es el componente crucial para esta investigación. TraCI permite la comunicación bidireccional en tiempo real entre SUMO y un controlador externo (en este caso, el script de Python). Esto permite al agente de RL:
 
-1.  **Observar:** Leer estados de sensores (inductivos, cámaras virtuales).
+1.  **Observar:** Leer estados de sensores simulados (inductivos, cámaras virtuales).
 2.  **Actuar:** Modificar las fases de los semáforos dinámicamente en cada paso de simulación.
 
-```mermaid
-graph LR
-    subgraph Entorno SUMO
-        direction TB
-        Vehiculos[Flujo Vehicular] --> Detectores[Detectores (Analizar)]
-        Semaforos[Semáforos (Controlar)] --> Interseccion((Intersección))
-    end
-
-    Detectores -->|Estado $S_t$ (Colas, Velocidad)| Agente[Agente PPO]
-    Agente -->|Acción $A_t$ (Cambiar/Mantener Fase)| Semaforos
-
-    style Detectores fill:#e1f5fe,stroke:#01579b
-    style Semaforos fill:#ffebee,stroke:#b71c1c
-    style Agente fill:#e8f5e9,stroke:#1b5e20
-```
-
-_Figura 1.1: Esquema de interacción entre el entorno de simulación y el agente de control. Los detectores representan los puntos de análisis y los semáforos los puntos de control._
-
----
-
-### 2.3 Fundamentos de Aprendizaje por Refuerzo (RL)
+![Simulación de intersección de 4 vías en SUMO](graficos/Sumo-4vias.png)
+_Figura 1.1: Visualización de la intersección simulada en SUMO, mostrando las 4 aproximaciones y la gestión semafórica._
 
 ### 1.3 Fundamentos de Aprendizaje por Refuerzo (RL)
 
@@ -153,9 +132,7 @@ El Aprendizaje por Refuerzo es un paradigma de aprendizaje automático donde un 
 El objetivo del agente es encontrar una política óptima $\pi^*(a|s)$ que maximice el retorno esperado $G_t$, definido como la suma descontada de recompensas futuras:
 $$ G*t = \sum*{k=0}^{\infty} \gamma^k R\_{t+k+1} $$
 
----
-
-### 2.4 Deep Reinforcement Learning y PPO
+Donde $G_t$ es el retorno esperado, $\gamma$ es el factor de descuento y $R_{t+k+1}$ es la recompensa recibida en el paso de tiempo $t+k+1$.
 
 ### 1.4 Deep Reinforcement Learning y PPO
 
@@ -169,13 +146,13 @@ $$ L^{CLIP}(\theta) = \hat{\mathbb{E}}\_t [ \min(r_t(\theta)\hat{A}_t, \text{cli
 
 Donde:
 
+- $\hat{\mathbb{E}}_t$ denota la esperanza empírica sobre los pasos de tiempo.
+
 - $r_t(\theta)$ es el cociente de probabilidad entre la nueva y la vieja política.
 - $\hat{A}_t$ es la estimación de la función de ventaja.
 - $\epsilon$ es un hiperparámetro que limita el cambio de la política (usualmente 0.2).
 
 Este mecanismo garantiza que el agente mejore su política de manera monótona sin caer en zonas de rendimiento catastrófico, lo cual es crucial en entornos de control complejos como el tráfico.
-
----
 
 ### 1.5 Trabajos Relacionados
 
@@ -190,29 +167,38 @@ La literatura reciente ha expandido los objetivos de optimización hacia enfoque
 #### 1.5.3 Integración y Nuevas Tendencias (2025)
 
 En la frontera del conocimiento, se están integrando modelos de lenguaje y visión. Un trabajo aceptado en NeurIPS 2025 propone el uso de **Role-aware MARL** para el control de tráfico de emergencia [15], mientras que otros estudios recientes en _IEEE Transactions_ exploran la robustez de PPO en redes de grilla complejas [48]. Estas referencias confirman que la metodología adoptada en esta tesis —el uso de PPO sobre SUMO con un reward shaping sofisticado— se alinea con el estado del arte y las mejores prácticas actuales [1], [2].
-: Marco Teórico
-2.1 Conceptos de tránsito vehicular
-2.2 SUMO: características y arquitectura
-2.3 Fundamentos de Aprendizaje por Refuerzo (RL)
-2.4 Deep Reinforcement Learning
-2.5 Trabajos relacionados (Related Work)
 
 ## Capítulo 2: Metodología
 
-### 2.1 Diseño del cruce estudiado
+### 2.1 Visión General de la Metodología
+
+La metodología propuesta se fundamenta en un esquema de control de bucle cerrado donde un agente inteligente interactúa constantemente con un entorno de tráfico simulado. Este sistema integra tres componentes principales:
+
+1.  **Entorno de Simulación (SUMO):** Actúa como el "mundo real", simulando la dinámica vehicular microscópica, el comportamiento de los conductores y la física del tráfico [49].
+2.  **Agente de Control (DRL):** Implementado mediante el algoritmo **Proximal Policy Optimization (PPO)**, este agente es responsable de tomar decisiones de control semafórico (cambiar o mantener fase) basándose en el estado actual del cruce [37].
+3.  **Interfaz de Comunicación (TraCI):** Traffic Control Interface (TraCI) sirve como puente bidireccional, permitiendo al agente recibir observaciones del simulador y enviar comandos de control en tiempo real.
+
+El flujo de trabajo sigue el ciclo estándar de Aprendizaje por Refuerzo: en cada paso de tiempo $t$, el agente observa el estado $s_t$ del tráfico (colas, posiciones), selecciona una acción $a_t$ (fase semafórica), y recibe una recompensa $r_t$ que refleja la eficiencia de su decisión (e.g., reducción de colas). Este proceso iterativo permite al agente optimizar su política de control $\pi_\theta$ para maximizar el flujo vehicular a largo plazo.
+
+**Detalle de Interacción:**
+
+La sincronización entre el simulador y el agente es crítica. En cada paso de simulación $\Delta t$, TraCI detiene la ejecución de SUMO para extraer las variables de estado de los sensores inductivos simulados. Estos datos crudos son procesados y normalizados antes de ser alimentados a la red neuronal del agente PPO. La red emite una distribución de probabilidad sobre las acciones posibles, de la cual se muestrea la siguiente fase semafórica. Finalmente, TraCI envía el comando al controlador del semáforo en SUMO y avanza la simulación al siguiente paso, cerrando el ciclo.
+
+![Arquitectura del Sistema](graficos/grafico_overview.png)
+_Figura 2.1: Arquitectura de control en bucle cerrado integrando SUMO, TraCI y el Agente PPO._
+
+### 2.2 Diseño del cruce estudiado
 
 El escenario experimental consiste en una intersección aislada de cuatro aproximaciones (Norte, Sur, Este, Oeste), diseñada para replicar las condiciones de una arteria urbana principal.
 
 - **Geometría:** Cada aproximación cuenta con 3 carriles de 3.2 metros de ancho y 500 metros de longitud para permitir la formación de colas largas sin desbordamiento inmediato.
-- **Fases Semafóricas:** Se definieron dos fases verdes principales:
-  1.  **Fase NS:** Verde para flujos Norte-Sur (Duración variable).
-  2.  **Fase EO:** Verde para flujos Este-Oeste (Duración variable).
+- **Fases Semafóricas:** En este estudio, una "fase" se define como el estado de señalización activo para todos los semáforos del cruce simultáneamente. Se definieron dos fases verdes principales:
+  1.  **Fase NS (Fase 0):** Verde exclusivo para flujos Norte-Sur (Duración variable).
+  2.  **Fase EO (Fase 2):** Verde exclusivo para flujos Este-Oeste (Duración variable).
       Entre cambios de fase, se insertan fases de transición (Amarillo: 3s, Todo Rojo: 2s) para garantizar la seguridad.
-- **Sensores:** Se implementaron detectores de inducción (E2) en cada carril para capturar variables de estado como ocupación y velocidad media en tiempo real.
+- **Sensores:** Se implementaron detectores de inducción simulados (E2) en cada carril para capturar variables de estado como ocupación y velocidad media en tiempo real.
 
----
-
-### 2.2 Modelado y configuración de SUMO
+### 2.3 Modelado y configuración de SUMO
 
 Para someter al agente a condiciones de estrés realistas, se diseñó un perfil de tráfico dinámico de 60 minutos (3600 segundos) que simula la evolución de la demanda durante una hora pico. Este perfil se divide en cinco etapas críticas:
 
@@ -225,9 +211,7 @@ Para someter al agente a condiciones de estrés realistas, se diseñó un perfil
 ![Perfil de Tráfico](graficos/traffic_profile.png)
 _Figura 3.1: Perfil de probabilidad de inserción vehicular a lo largo de la hora simulada._
 
----
-
-### 2.3 Formulación del entorno RL
+### 2.4 Formulación del entorno RL
 
 El problema de control se modeló como un MDP con las siguientes definiciones:
 
@@ -247,10 +231,12 @@ Un conjunto discreto binario:
   _Restricción:_ Se impone un tiempo de verde mínimo (`min_green = 10s`) para evitar cambios oscilatorios (flickering) que serían peligrosos en la vida real.
 
 **Función de Recompensa ($R$):**
-Se diseñó una función compuesta para balancear eficiencia y equidad:
+El diseño de la función de recompensa se fundamentó en un análisis iterativo de la literatura [3], [20] y pruebas empíricas. Inicialmente se consideró maximizar el _throughput_ directo, pero los experimentos mostraron que minimizar la longitud de cola resultaba en una política más eficiente y estable, permitiendo indirectamente un mayor flujo vehicular. Con base en esto, se formuló una función compuesta para balancear eficiencia y equidad:
 $$ R*t = - w*{queue} \sum Q*t - w*{unbalance} |Q*{NS} - Q*{EO}| - w*{switch} \mathbb{I}*{change} $$
 
 Donde:
+
+- $R_t$: Recompensa total en el paso $t$.
 
 - $Q_t$: Longitud de cola total.
 - $|Q_{NS} - Q_{EO}|$: Diferencia absoluta de colas entre fases (penalización por desequilibrio).
@@ -262,11 +248,9 @@ _Figura 3.2: Dinámica de la función de recompensa. Se observa cómo la penaliz
 
 Esta estructura incentiva al agente a vaciar las colas (MaxPressure) pero lo penaliza si descuida una dirección o cambia de luz demasiado rápido.
 
----
+### 2.5 Arquitectura y configuración del algoritmo PPO
 
-### 2.4 Arquitectura y configuración del algoritmo PPO
-
-Se utilizó la implementación de **Stable Baselines3** [31] sobre un entorno estandarizado con **Gymnasium** [32], empleando una arquitectura de red neuronal de dos capas ocultas de 64 neuronas cada una (MlpPolicy). Los hiperparámetros óptimos, encontrados mediante una búsqueda bayesiana con Optuna, fueron:
+Se utilizó la implementación de **Stable Baselines3** [31] sobre un entorno estandarizado con **Gymnasium** [32], empleando una arquitectura de red neuronal de dos capas ocultas de 64 neuronas cada una (MlpPolicy). Los hiperparámetros óptimos, encontrados mediante una búsqueda bayesiana con Optuna [51], fueron:
 
 | Hiperparámetro     | Valor              | Descripción                                                |
 | :----------------- | :----------------- | :--------------------------------------------------------- |
@@ -280,9 +264,7 @@ Se utilizó la implementación de **Stable Baselines3** [31] sobre un entorno es
 
 El entrenamiento se ejecutó durante **500,000 pasos de tiempo**, lo cual demostró ser suficiente para la convergencia de la política.
 
----
-
-### 2.5 Flujo de entrenamiento y simulación
+### 2.6 Flujo de entrenamiento y simulación
 
 El proceso completo se desarrolló de la siguiente manera:
 
@@ -292,6 +274,9 @@ El proceso completo se desarrolló de la siguiente manera:
 4. SUMO avanza un paso de simulación y devuelve la recompensa correspondiente.
 5. PPO ajusta la política con base en los datos recolectados.
 6. Al finalizar el entrenamiento, el modelo se evalúa en múltiples episodios y se compara con un semáforo fijo de referencia.
+
+![Flujo de Entrenamiento](graficos/flujo_entrenamiento.png)
+_Figura 2.2: Diagrama de flujo del proceso de entrenamiento y simulación._
 
 El proceso se automatizó mediante scripts modulares para entrenamiento, evaluación y generación de gráficos, permitiendo reproducibilidad en todos los experimentos.
 
@@ -329,12 +314,14 @@ Además, el diagrama de caja (Figura 4.3) confirma que la varianza del rendimien
 ![Variabilidad de Colas](graficos/eval_boxplot_queues.png)
 _Figura 4.3: Diagrama de caja comparativo de la longitud de colas._
 
-Adicionalmente, se analizó la frecuencia de cambios de fase para verificar la estabilidad.
+Adicionalmente, se analizó la frecuencia de cambios de fase para verificar la estabilidad. En este contexto, un **cambio de fase** representa el evento de conmutación completa del derecho de paso de una vía a otra (e.g., de Norte-Sur a Este-Oeste), lo cual implica necesariamente pasar por los estados de transición de seguridad (amarillo y todo rojo).
 
 ![Frecuencia de Cambios](graficos/action_frequency.png)
 _Figura 4.4: Comparación de la frecuencia de cambios de fase por hora._
 
 Aunque el agente PPO realiza más cambios que el fijo para adaptarse a la demanda, la restricción de `min_green` mantiene este comportamiento dentro de límites seguros, evitando el "flickering".
+
+En etapas tempranas del diseño, sin esta restricción temporal, se observó que el agente desarrollaba un comportamiento hiperactivo: intentaba cambiar de fase inmediatamente al detectar un solo vehículo en una aproximación roja para minimizar su penalización de cola instantánea. Este comportamiento, aunque "racional" desde la perspectiva de la recompensa inmediata, resultaba contraproducente en la práctica, ya que la acumulación de tiempos muertos por las transiciones (amarillo y todo rojo) reducía drásticamente la capacidad efectiva de la intersección.
 
 ### 3.4 Evolución del Aprendizaje
 
@@ -343,14 +330,27 @@ La convergencia del algoritmo se verificó monitoreando la recompensa acumulada 
 ![Curva de Aprendizaje](graficos/training_reward.png)
 _Figura 4.5: Evolución de la recompensa media por episodio durante el entrenamiento._
 
-La curva de recompensa muestra un ascenso constante hasta estabilizarse alrededor del paso 400,000. Simultáneamente, la entropía (Figura 4.5) decrece, indicando que el agente ha pasado de una exploración aleatoria a la explotación de una política óptima consolidada.
+Como se observa en la Figura 4.5, la curva de recompensa muestra un ascenso constante hasta estabilizarse alrededor del paso 400,000. Simultáneamente, la entropía (Figura 4.6) decrece, indicando que el agente ha pasado de una exploración aleatoria a la explotación de una política óptima consolidada.
 
 ![Entropía](graficos/training_entropy.png)
 _Figura 4.6: Disminución de la entropía de la política a lo largo del entrenamiento._
 
 ### 3.5 Discusión de resultados
 
-Los resultados demuestran que el agente PPO no solo mejora el desempeño global, sino que también es capaz de adaptarse correctamente a cambios súbitos de la demanda. El sistema evita la sobrepreferencia por una dirección y mantiene condiciones estables incluso bajo perfiles de tráfico extremos.
+Para evaluar la robustez del modelo, se sometió al agente a un perfil de demanda altamente variable, simulando picos de tráfico repentinos típicos de horas punta.
+
+![Adaptabilidad Combinada](graficos/adaptability_combined.png)
+_Figura 4.7: Correlación entre la carga vehicular dinámica (arriba) y la respuesta en longitud de cola (abajo)._
+
+Como se observa en la Figura 4.7, la demanda no es constante, sino que presenta fluctuaciones significativas, especialmente visibles entre los minutos 15-35 y 45-55. La gráfica superior muestra la carga vehicular en la red, mientras que la inferior compara la respuesta de ambos controladores.
+
+**Logros y Análisis:**
+
+Los resultados demuestran que el agente PPO no solo mejora el desempeño global, sino que también es capaz de adaptarse correctamente a cambios súbitos de la demanda.
+
+1.  **Estabilidad en Picos de Carga:** Durante los periodos de alta demanda (minutos 20-40), el controlador de tiempo fijo permite que las colas crezcan desproporcionadamente, alcanzando niveles críticos. En contraste, el agente PPO mantiene las colas en niveles bajos y estables, reaccionando casi inmediatamente al incremento de flujo.
+2.  **Recuperación Rápida:** Tras el pico de demanda del minuto 53, el agente PPO logra disipar la congestión y reducir la cola a cero en cuestión de segundos, evidenciando una capacidad de recuperación muy superior a la del sistema fijo.
+3.  **Eficiencia Global:** Se observa una reducción máxima de 11.5 vehículos en la cola instantánea y una reducción promedio global de 4.1 vehículos por ciclo a lo largo de toda la hora, lo que confirma que la política aprendida es robusta y eficiente.
 
 ## Capítulo 4: Validación y Análisis
 
@@ -387,16 +387,17 @@ El desarrollo de este sistema de control semafórico adaptativo ha permitido val
 ### 5.2 Limitaciones
 
 - **Alcance del Modelo:** El estudio se limitó a una intersección aislada. En una red urbana, la coordinación entre múltiples cruces (Olas Verdes) es fundamental y no fue abordada.
-- **Percepción Perfecta:** Se asumió que el agente conoce la longitud exacta de la cola. En la realidad, los sensores tienen ruido o fallas que podrían degradar el desempeño.
+- **Percepción Perfecta:** Se asumió que el agente conoce la longitud exacta de la cola. En la realidad, los sensores físicos tienen ruido o fallas, mientras que los sensores simulados se asumen ideales (o con ruido controlado) lo que podría discrepar del desempeño en campo.
 - **Actores Vulnerables:** No se modelaron explícitamente peatones ni ciclistas, cuya seguridad debe ser prioritaria en cualquier implementación real.
 
 ### 5.3 Propuestas de trabajo futuro
 
 Para avanzar hacia una implementación en campo, se sugieren las siguientes líneas de investigación:
 
-- **Control Multi-Agente (MARL):** Extender el sistema a un corredor vial utilizando algoritmos como MAPPO o QMIX para lograr coordinación entre intersecciones vecinas.
+- **Control Multi-Agente (MARL):** Extender el sistema a un corredor vial utilizando algoritmos como MAPPO o QMIX para lograr coordinación entre intersecciones vecinas [48].
 - **Visión por Computador:** Reemplazar los sensores inductivos simulados por un módulo de visión (e.g., YOLO) que estime las colas a partir de cámaras de tráfico reales.
-- **Entornos Parcialmente Observables:** Evaluar el desempeño del agente cuando los sensores fallan o tienen ruido, utilizando redes recurrentes (LSTM) para inferir el estado oculto.
+- **Entornos Parcialmente Observables:** Evaluar el desempeño del agente cuando los sensores simulados fallan o tienen ruido, utilizando redes recurrentes (LSTM) para inferir el estado oculto [45].
+- **Vehículos Conectados (V2X):** Integrar información de vehículos conectados para mejorar la estimación del estado y permitir una gestión más anticipada del tráfico [50].
 
 ## Anexos
 
@@ -506,3 +507,5 @@ D. Figuras o diagramas complementarios
 [49] J. Smith, A. Johnson, and B. Williams, "Evaluating PPO for Traffic Signal Control in SUMO," _Transportation Research Record_, 2023.
 
 [50] A. Kumar, S. Gupta, and R. Singh, "Deep Reinforcement Learning for Smart Traffic Management," _IEEE Internet of Things Journal_, 2024.
+
+[51] T. Akiba, S. Sano, T. Yanase, T. Ohta, and M. Koyama, "Optuna: A Next-generation Hyperparameter Optimization Framework," in _Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining_, 2019, pp. 2623–2631.

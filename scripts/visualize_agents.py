@@ -137,7 +137,6 @@ def main():
             w_served=1.0,
             w_queue=1.0,
             w_unbalance=0.37,
-            always_compute_metrics=True,
             use_gui=True,  # ENABLE GUI
             randomize_sumo_seed=False  # Same scenario for fair comparison
         )

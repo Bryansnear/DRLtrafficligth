@@ -23,8 +23,7 @@ wheels/
 # Virtual environments
 venv/
 ENV/
-# env/
-.venv
+.venv/
 
 # IDE
 .vscode/
@@ -38,48 +37,47 @@ ENV/
 .ipynb_checkpoints
 *.ipynb
 
-# Logs
-logs/tensorboard/*
-!logs/tensorboard/.gitkeep
-logs/eval/*
-!logs/eval/.gitkeep
+# Logs and Results
+logs/
+results/
+outputs/
 *.log
+evaluation_results.txt
 
-# Models (opcional - descomentar para no subir modelos)
-# models/*.zip
+# Models and Databases
+models/
+*.db
+*.zip
 
-# Outputs
-# outputs/*
-!outputs/.gitkeep
+# Thesis Documents and Artifacts
+entregables_tesis/
+bosquejo_tesis*
+*.docx
+*.pdf
+*.html
+*.md
+!README.md
+!requirements.txt
 
-# Registry plots (se regeneran automáticamente)
-registry/plots/*
-!registry/plots/.gitkeep
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-*.swp
-check_*.py
-fix_*.py
+# Scripts to exclude (Graphics and formatting)
+scripts/generate_adaptability_plots.py
+scripts/generate_thesis_plots.py
+scripts/visualize_agents.py
+convert_*.py
+apply_yachay_format.py
+convert_pandoc.bat
 
 # SUMO output files
 *.xml.gz
 tripinfo*.xml
 tripinfo*.csv
 
-# Sistema
+# System
 Thumbs.db
-.DS_Store
 desktop.ini
 
-# Pytest
+# Testing
 .pytest_cache/
 .coverage
 htmlcov/
-
-# MyPy
 .mypy_cache/
-.dmypy.json
-dmypy.json
