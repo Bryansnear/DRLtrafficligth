@@ -18,7 +18,7 @@ import csv
 import sys
 import os
 from datetime import datetime
-    from pathlib import Path
+from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 
 import numpy as np

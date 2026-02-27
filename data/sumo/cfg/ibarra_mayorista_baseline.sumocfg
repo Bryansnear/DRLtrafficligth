@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+    <input>
+        <net-file value="../network/ibarra_mayorista_10cuadras.net.xml" />
+        <route-files value="../routes/ibarra_mayorista_routes.rou.xml" />
+        <additional-files value="../additional/ibarra_13abril_e2.add.xml" />
+    </input>
+    <time>
+        <begin value="0" />
+        <end value="3600" />
+        <step-length value="1" />
+    </time>
+    <processing>
+        <ignore-route-errors value="true" />
+    </processing>
+    <report>
+        <verbose value="false" />
+        <no-step-log value="true" />
+    </report>
+    <gui_only>
+        <start value="true" />
+        <quit-on-end value="false" />
+    </gui_only>
+</configuration>

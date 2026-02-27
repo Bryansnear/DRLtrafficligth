@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<additional>
+    <laneAreaDetector id="N_in_0" lane="-1228099685#0_0" pos="3.0" endPos="47.2" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="S_in_0" lane="-756028261_0" pos="51.06" endPos="101.06" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="E_in_0" lane="1228099684_0" pos="65.32" endPos="115.32" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="W_in_0" lane="51962697#2_0" pos="3.0" endPos="26.87" freq="5" file="e2_output.xml" friendlyPos="true" />
+</additional>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<additional>
+    <laneAreaDetector id="e2_13abril_-1228099684_0" lane="-1228099684_0" pos="0" endPos="100" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_-756028261_0" lane="-756028261_0" pos="0" endPos="98.06" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_1228099684_0" lane="1228099684_0" pos="0" endPos="100" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_750471837#1_0" lane="750471837#1_0" pos="0" endPos="63.94" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_750471837#2_0" lane="750471837#2_0" pos="0" endPos="100" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_750471837#3_0" lane="750471837#3_0" pos="0" endPos="90.17" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_750471837#4_0" lane="750471837#4_0" pos="0" endPos="63.010000000000005" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_750471838#0_0" lane="750471838#0_0" pos="0" endPos="17.08" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_750471838#1_0" lane="750471838#1_0" pos="0" endPos="58.26" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_750471838#3_0" lane="750471838#3_0" pos="0" endPos="16.5" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_750471838#4_0" lane="750471838#4_0" pos="0" endPos="43.68" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_750471838#5_0" lane="750471838#5_0" pos="0" endPos="100" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_13abril_756028261_0" lane="756028261_0" pos="0" endPos="97.15" freq="5" file="e2_output.xml" friendlyPos="true" />
+</additional>

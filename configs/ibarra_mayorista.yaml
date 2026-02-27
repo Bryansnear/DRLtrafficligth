@@ -1,0 +1,80 @@
+# Configuración para el escenario Ibarra Mayorista
+# Zona: Mercado Mayorista - Calles 13 de Abril y Av. Jaime Roldós Aguilera
+
+sumo:
+  cfg_path: data/sumo/cfg/ibarra_mayorista_baseline.sumocfg
+  net_path: data/sumo/network/ibarra_mayorista_10cuadras.net.xml
+  step_length: 1.0
+  gui: false
+
+control:
+  control_interval: 5 # segundos (época de decisión)
+  min_green: 10 # mínimo antes de permitir SWITCH
+  yellow: 3
+  all_red: 1
+  max_green: 60 # máximo verde antes de forzar cambio
+
+# Semáforos objetivo (en la calle 13 de Abril)
+target_tls:
+  - "667931952"
+  - "667931948"
+  - "667931949"
+  - "1234094610"
+  - "667931953"
+  - "1237551450"
+  - "662697202"
+  - "1237551454"
+  - "1234094612"
+  - "1234094618"
+
+# E2 detectors - Se generan automáticamente por setup_ibarra_scenario.py
+detectors:
+  e2_file: data/sumo/additional/ibarra_mayorista_e2.add.xml
+  v_free: 13.89 # 50 km/h en m/s
+  jam_length_thr_m: 3.0
+  e2_capacity_per_lane: 15
+
+# Aleatorización
+randomize_sumo_seed: true
+
+# Reward configuration (para entrenamiento futuro)
+reward:
+  w_served: 1.0
+  w_queue: 1.0
+  w_backlog: 0.00
+  w_switch: 0.00
+  w_spill: 0.00
+  w_unbalance: 0.37
+  w_select: 0.00
+  kappa_backlog: 15
+  sat_headway_s: 2.0
+
+# Baseline configuration
+baseline:
+  cycle_time: 60 # Duración total del ciclo en segundos
+  phase_split: 0.5 # 50% del tiempo para cada dirección
+
+# Training (para uso futuro)
+train:
+  max_episode_steps: 720 # 1 hora a 5s por paso
+  total_timesteps: 500000
+  eval_freq: 50000
+  n_envs: 4
+
+# PPO config (para uso futuro)
+ppo:
+  policy: MlpPolicy
+  lr: 0.0003
+  gamma: 0.99
+  n_steps: 2048
+  batch_size: 512
+  n_epochs: 10
+  clip_range: 0.2
+  ent_coef: 0.01
+
+seeds:
+  numpy: 42
+  torch: 42
+  env: 42
+
+description: "Escenario Ibarra Mayorista - Calle 13 de Abril y Av. Jaime Roldós"

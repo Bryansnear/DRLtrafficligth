@@ -1,0 +1,59 @@
+# Configuración de Entrenamiento PPO para Intersección Ibarra 667932004
+sumo:
+  cfg_path: data/sumo/cfg/intersection_667932004.sumocfg
+  step_length: 1.0
+  gui: false
+
+detectors:
+  # Orden alineado con fases: Ph0 (E+S), Ph2 (N+W) -> [Este, Sur, Norte, Oeste]
+  e2_ids:
+    - E_in_0
+    - S_in_0
+    - N_in_0
+    - W_in_0
+  v_free: 13.9
+  jam_length_thr_m: 20.0
+  # Capacidad promedio referencial (el modelo aprenderá la real por carril)
+  e2_capacity_per_lane: 12
+
+control:
+  control_interval: 5
+  min_green: 10
+  yellow: 3
+  all_red: 1
+  max_green: 60
+
+reward:
+  # Pesos optimizados
+  w_served: 0.30
+  w_queue: 0.40
+  w_backlog: 0.20
+  w_switch: 0.10
+  w_spill: 0.20
+  # Nuevos términos (reducidos para simplificar aprendizaje inicial)
+  w_unbalance: 0.05
+  w_select: 0.05
+  w_invalid_action: 0.5
+
+  kappa_backlog: 10
+  sat_headway_s: 2.0
+
+ppo:
+  policy: MlpPolicy
+  learning_rate: 3.0e-4
+  gamma: 0.99
+  n_steps: 2048
+  batch_size: 64
+  n_epochs: 10
+  clip_range: 0.2
+  ent_coef: 0.005
+
+train:
+  total_timesteps: 100000
+  max_episode_steps: 3600 # 1 hora por episodio
+  n_envs: 1
+  randomize_sumo_seed: true # Variación estocástica
+
+seeds:
+  env: 42
+  numpy: 42

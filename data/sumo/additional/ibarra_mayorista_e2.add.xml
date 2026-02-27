@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<additional>
+    <laneAreaDetector id="e2_51962350#0_0" lane="51962350#0_0" pos="0" endPos="91.09" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_53960645#0_0" lane="53960645#0_0" pos="0" endPos="39.55" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_-51962350#2_0" lane="-51962350#2_0" pos="0" endPos="48.92" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_107366880#3_0" lane="107366880#3_0" pos="0" endPos="41.23" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_51962351_0" lane="51962351_0" pos="0" endPos="98.3" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_53960645#1_0" lane="53960645#1_0" pos="0" endPos="40.03" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_107366880#4_0" lane="107366880#4_0" pos="0" endPos="39.94" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_51962631#8_0" lane="51962631#8_0" pos="0" endPos="100" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_-51962355#2_0" lane="-51962355#2_0" pos="0" endPos="83.32" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_-525739739_0" lane="-525739739_0" pos="0" endPos="100" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_53960645#2_0" lane="53960645#2_0" pos="0" endPos="42.61" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_107366880#0_0" lane="107366880#0_0" pos="0" endPos="100" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_107366880#1_0" lane="107366880#1_0" pos="0" endPos="44.45" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_525739383#0_0" lane="525739383#0_0" pos="0" endPos="100" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_107366880#2_0" lane="107366880#2_0" pos="0" endPos="43.86" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_53960645#3_0" lane="53960645#3_0" pos="0" endPos="44.58" freq="5" file="e2_output.xml" friendlyPos="true" />
+    <laneAreaDetector id="e2_750471838#5_0" lane="750471838#5_0" pos="0" endPos="100" freq="5" file="e2_output.xml" friendlyPos="true" />
+</additional>
