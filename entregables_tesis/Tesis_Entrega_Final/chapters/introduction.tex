@@ -1,0 +1,40 @@
+\section{Contexto del problema}
+El crecimiento urbano y el aumento del parque automotor han provocado que las intersecciones semaforizadas se conviertan en puntos críticos de congestión. Los semáforos tradicionales, basados en ciclos fijos, no consideran la variabilidad temporal del flujo vehicular ni las diferencias entre direcciones. En ciudades intermedias, donde la demanda presenta picos súbitos y asimétricos, los controladores fijos generan colas extensas, tiempos de espera elevados y un uso ineficiente del espacio vial.
+
+\section{Motivación}
+La gestión adaptativa del tráfico representa una oportunidad para reducir de manera significativa la congestión mediante el uso de técnicas modernas de inteligencia artificial. Los avances en \textbf{Deep Reinforcement Learning (DRL)} y la capacidad de simular escenarios realistas con \textbf{SUMO} permiten entrenar agentes capaces de aprender políticas óptimas para la asignación de tiempos semafóricos, respondiendo de forma dinámica a cambios en la demanda. Esta tesis busca aplicar dichas técnicas para mejorar la movilidad urbana en un cruce representativo de la ciudad.
+
+\section{Planteamiento del problema}
+Los sistemas semafóricos de tiempo fijo son ineficientes cuando la demanda vehicular no es uniforme ni estable. En situaciones de alto tráfico, estos sistemas mantienen fases verdes incluso cuando no existen vehículos, mientras otras aproximaciones acumulan colas. El problema a resolver es: \textbf{¿cómo optimizar los tiempos semafóricos de una intersección utilizando DRL para minimizar la formación de colas y mejorar el flujo vehicular bajo condiciones dinámicas y variables?}
+
+\section{Objetivo general}
+Desarrollar un sistema de control semafórico adaptativo basado en \textbf{Proximal Policy Optimization (PPO)}, integrado con SUMO, capaz de reducir colas, mejorar el throughput (caudal vehicular) y adaptarse a variaciones en la demanda vehicular.
+
+\section{Objetivos específicos}
+\begin{itemize}
+    \item Diseñar e implementar un entorno de simulación de tráfico en SUMO para un cruce urbano representativo.
+    \item Definir y configurar un agente DRL basado en PPO para el control de fases semafóricas.
+    \item Construir una función de recompensa que guíe al agente hacia políticas eficientes y estables.
+    \item Entrenar el agente bajo diferentes perfiles de tráfico dinámico.
+    \item Evaluar el desempeño del agente comparándolo con un controlador de tiempo fijo.
+\end{itemize}
+
+\section{Justificación}
+El impacto de la congestión vehicular trasciende la mera incomodidad de los conductores; se manifiesta en pérdidas económicas significativas, incremento en el consumo de combustibles fósiles y un aumento preocupante en las emisiones de gases de efecto invernadero. En ciudades en desarrollo, la infraestructura vial rígida no puede expandirse al mismo ritmo que el parque automotor. Por tanto, la optimización del uso de la infraestructura existente se vuelve imperativa.
+
+Implementar estrategias inteligentes basadas en \textbf{Deep Reinforcement Learning (DRL)} permite transitar de un paradigma reactivo y estático a uno proactivo y dinámico. A diferencia de los sistemas tradicionales que requieren costosas recalibraciones manuales, un agente DRL aprende y evoluciona con el tráfico. Además, la integración con simuladores de código abierto y estandarizados como \textbf{SUMO} garantiza no solo la viabilidad técnica y económica del proyecto, sino también su reproducibilidad y rigor científico, abriendo la puerta a futuras implementaciones en hardware real a bajo costo.
+
+\section{Alcance y limitaciones}
+\textbf{Alcance:}
+\begin{itemize}
+    \item Se estudia una intersección específica con alto flujo vehicular.
+    \item El agente controla únicamente el ciclo semafórico.
+    \item Las pruebas se realizan en un entorno simulado.
+\end{itemize}
+
+\textbf{Limitaciones:}
+\begin{itemize}
+    \item No se implementa el sistema en infraestructura real.
+    \item El modelo no considera peatones ni transporte público.
+    \item La percepción del entorno se basa en datos simulados (no cámaras reales).
+\end{itemize}

@@ -1,0 +1,21 @@
+\section{Revisiones y bases comparativas}
+Las revisiones recientes coinciden en que el control semafórico con aprendizaje por refuerzo ha evolucionado desde experimentos en intersecciones aisladas hacia formulaciones multiagente, escalables y orientadas a métricas operativas más completas. Los estudios de síntesis más recientes reportan como variables de evaluación dominantes el tiempo de espera, la longitud de cola, el throughput y la estabilidad del control \cite{survey_prajapati2024,survey_zhao2024,review_rasheed2020,review_noaeen2022}.
+
+Además de las revisiones, la comunidad ha fortalecido la comparación entre métodos mediante conjuntos de pruebas reproducibles. En particular, los benchmarks propuestos para tráfico semafórico facilitaron la evaluación consistente de distintos algoritmos y configuraciones de red \cite{benchmark_ault2021}.
+
+\section{Control cooperativo y escalable}
+Sobre esta base, la literatura avanzó desde controladores de intersección aislada, como el propuesto por Liang et al. \cite{liang2019}, hacia arquitecturas con cooperación explícita entre nodos. Modelos como \textbf{CoLight} y \textbf{MetaLight} introdujeron mecanismos de coordinación y transferencia que mejoran el desempeño cuando varias intersecciones comparten información \cite{colight2019,metalight2020}.
+
+Posteriormente, distintos trabajos consolidaron el enfoque multiagente a escala de red. Entre ellos destacan las propuestas de Chu et al. para control distribuido en grandes redes urbanas, así como estudios posteriores sobre optimización de alcance regional y aprendizaje con atención para capturar dependencias entre intersecciones vecinas \cite{marl_chu2020,networkwide_li2021,attendlight2020}.
+
+\section{Tendencias recientes}
+Las líneas más recientes se concentran en robustez, conectividad y coordinación regional. Se han estudiado formulaciones robustas frente a incertidumbre y variabilidad del tráfico \cite{robust_tan2020}, así como estrategias para priorización semafórica en entornos conectados \cite{connected_long2022}. En paralelo, variantes basadas en PPO han sido extendidas a redes heterogéneas y escenarios de control cooperativo de mayor escala \cite{haps_ppo2025}.
+
+También han surgido propuestas especializadas para situaciones críticas, como el control coordinado de tráfico de emergencia mediante MARL con información contextual de roles \cite{roleaware_zhang2025}. En conjunto, estas tendencias respaldan la elección metodológica de esta tesis: un controlador basado en PPO, entrenado en simulación reproducible y con una recompensa diseñada para priorizar la reducción de colas sin sacrificar estabilidad \cite{compare_ouyang2024,ppo_karedla2025}.
+
+\section{Trabajos adicionales considerados}
+Para completar la curaduría bibliográfica, también se incluyen estudios de referencia sobre aprendizaje descentralizado temprano, analítica de datos en ITS y escalamiento multiagente en redes urbanas \cite{excel_7_eltantawy2010,excel_8_zhu2019,excel_9_chen2020,excel_22_wang2021,excel_23_shabestary2018,excel_34_zhang2021}.
+
+Asimismo, se consideran trabajos complementarios en optimización de intersecciones, coordinación entre cruces y enfoques híbridos con control predictivo \cite{excel_24_khattak2020,excel_30_ma2026,excel_36_tang2024,excel_38_ashwini2025}.
+
+Finalmente, la revisión incorpora referencias metodológicas de dominios cercanos (abstracción de modelos, generación, análisis de datos de conducción, explicabilidad y robótica), utilizadas como contexto técnico adicional para el diseño experimental y la discusión crítica del alcance del estudio \cite{excel_13_kadioglu2024,excel_16_xu2024,excel_18_hu2022,excel_32_crielaard2018,excel_33_he2020}.

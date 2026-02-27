@@ -1,0 +1,25 @@
+\section{Conclusiones generales}
+El desarrollo de este sistema de control semafórico adaptativo ha permitido validar la hipótesis de que el Deep Reinforcement Learning es una herramienta viable y superior para la gestión del tráfico urbano.
+
+\begin{enumerate}
+    \item \textbf{Eficiencia Operativa:} Se logró una reducción del \textbf{60\% en las colas}, lo que impacta directamente en la reducción de tiempos de viaje y consumo de combustible.
+    \item \textbf{Adaptabilidad Real:} El agente demostró capacidad para manejar patrones de tráfico asimétricos y ráfagas repentinas, escenarios donde los sistemas tradicionales fallan sistemáticamente.
+    \item \textbf{Viabilidad de Implementación:} La inclusión de restricciones de seguridad (\texttt{min\_green}) y penalizaciones por inestabilidad asegura que la política aprendida sea segura y aplicable en el mundo real, no solo una curiosidad teórica.
+\end{enumerate}
+
+\section{Limitaciones}
+\begin{itemize}
+    \item \textbf{Alcance del Modelo:} El estudio se limitó a una intersección aislada. En una red urbana, la coordinación entre múltiples cruces es fundamental y no fue abordada.
+    \item \textbf{Percepción Perfecta:} Se asumió que el agente conoce la longitud exacta de la cola. En la realidad, los sensores físicos tienen ruido o fallas, lo que podría afectar el desempeño en campo.
+    \item \textbf{Actores Vulnerables:} No se modelaron explícitamente peatones ni ciclistas, cuya seguridad debe ser prioritaria en cualquier implementación real.
+\end{itemize}
+
+\section{Propuestas de trabajo futuro}
+Para avanzar hacia una implementación en campo, se sugieren las siguientes líneas de investigación:
+
+\begin{itemize}
+    \item \textbf{Control Multi-Agente (MARL):} Extender el sistema a un corredor vial utilizando esquemas coordinados entre intersecciones vecinas \cite{marl_chu2020,haps_ppo2025}.
+    \item \textbf{Visión por Computador:} Reemplazar los sensores inductivos simulados por un módulo de visión que estime las colas a partir de cámaras de tráfico reales.
+    \item \textbf{Observación Parcial y Robustez:} Evaluar el desempeño del agente bajo ruido, pérdida de sensores o estados parcialmente observables para medir su tolerancia a incertidumbre \cite{robust_tan2020}.
+    \item \textbf{Vehículos Conectados (V2X):} Integrar información de vehículos conectados para mejorar la estimación del estado y permitir una gestión más anticipada del tráfico \cite{connected_long2022}.
+\end{itemize}
