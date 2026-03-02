@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.4)  27 FEB 2026 00:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.12.4)  1 MAR 2026 15:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -721,7 +721,7 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 )
 (chapters/glosaries.tex)
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-67.
+64.
 
 (C:\Users\bryan\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -734,24 +734,24 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 ) (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
 
 (C:\Users\bryan\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -809,60 +809,59 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count365
-Package hyperref Info: Link coloring ON on input line 167.
+Package hyperref Info: Link coloring ON on input line 164.
 
 (main.out) (main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-<images/yachaytech.png, id=215, 247.8861pt x 75.4017pt>
-File: images/yachaytech.png Graphic file (type png)
-<use images/yachaytech.png>
-Package pdftex.def Info: images/yachaytech.png  used on input line 175.
-(pdftex.def)             Requested size: 156.16905pt x 47.50331pt.
+<images/logo_universidad.png, id=215, 154.176pt x 55.407pt>
+File: images/logo_universidad.png Graphic file (type png)
+<use images/logo_universidad.png>
+Package pdftex.def Info: images/logo_universidad.png  used on input line 172.
+(pdftex.def)             Requested size: 151.52429pt x 54.45403pt.
  [1
 
 {C:/Users/bryan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/brya
-n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <./images/yachayt
-ech.png>]
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.201 \frontmatter
-                   [2
+n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <./images/logo_un
+iversidad.png>] (chapters/autoria.tex) [1
 
-] (chapters/autoria.tex) [1
-
-] [2
 
 ]
-(chapters/autorizacion.tex) [3] [4
-
-] (chapters/dedication.tex) [5] [6
+(chapters/autorizacion.tex) [2
 
 ]
+Chapter 1.
+(chapters/dedication.tex) [3
+
+]
+Chapter 2.
 (chapters/acknowledgments.tex
 Underfull \hbox (badness 1048) in paragraph at lines 7--8
 []\OT1/lmr/m/n/12 A mi es-posa \OT1/lmr/bx/n/12 Naty\OT1/lmr/m/n/12 , por es-ta
 r siem-pre a mi lado, por las noches de desvelo
  []
 
-) [7] [8
-
-] (chapters/resumen.tex) [9] [10
-
-] (chapters/abstract.tex) [11] [12
+) [4
 
 ]
-(main.toc
+Chapter 3.
+(chapters/resumen.tex) [5
+
+]
+Chapter 4.
+(chapters/abstract.tex) [6
+
+] (main.toc
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 9
 .
- (C:\Users\bryan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+
+(C:\Users\bryan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
 9.
+
 (C:\Users\bryan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -888,26 +887,28 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
 (C:\Users\bryan\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-[13] [14])
+[7
+
+] [8])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
 
 No file main.gls.
-[15] [16
-
-] (main.lot)
+[9] (main.lot)
 \tf@lot=\write5
 \openout5 = `main.lot'.
 
- [17] [18
+ [10
 
-] (main.lof [19])
+] (main.lof [11
+
+])
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
- [20]
-Chapter 1.
+ [12]
+Chapter 5.
 (chapters/introduction.tex [1
 
 
@@ -919,146 +920,145 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [2{C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc
 }])
-[3] [4
+[3]
+Chapter 6.
+(chapters/fundamentals.tex [4
 
-]
-Chapter 2.
-(chapters/fundamentals.tex [5{C:/Users/bryan/AppData/Local/Programs/MiKTeX/font
-s/enc/dvips/lm/lm-mathit.enc}{C:/Users/bryan/AppData/Local/Programs/MiKTeX/font
-s/enc/dvips/lm/lm-mathsy.enc}] [6]
-<images/Sumo-4vias.png, id=466, 788.19469pt x 623.32875pt>
+{C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
+{C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}
+] [5]
+<images/Sumo-4vias.png, id=424, 788.19469pt x 623.32875pt>
 File: images/Sumo-4vias.png Graphic file (type png)
 <use images/Sumo-4vias.png>
 Package pdftex.def Info: images/Sumo-4vias.png  used on input line 41.
 (pdftex.def)             Requested size: 368.57838pt x 291.4808pt.
- [7 <./images/Sumo-4vias.png>]) [8{C:/Users/bryan/AppData/Local/Programs/MiKTeX
-/fonts/enc/dvips/lm/lm-mathex.enc}] [9]
-[10
+ [6 <./images/Sumo-4vias.png>]) [7{C:/Users/bryan/AppData/Local/Programs/MiKTeX
+/fonts/enc/dvips/lm/lm-mathex.enc}] [8]
+Chapter 7.
+(chapters/state_of_art.tex [9
+
+]) [10]
+Chapter 8.
+(chapters/metodology.tex [11
 
 ]
-Chapter 3.
-(chapters/state_of_art.tex [11]) [12]
-Chapter 4.
-(chapters/metodology.tex [13
-
-]
-<images/grafico_overview.png, id=575, 1027.84pt x 561.09625pt>
+<images/grafico_overview.png, id=529, 1027.84pt x 561.09625pt>
 File: images/grafico_overview.png Graphic file (type png)
 <use images/grafico_overview.png>
 Package pdftex.def Info: images/grafico_overview.png  used on input line 17.
 (pdftex.def)             Requested size: 368.57838pt x 201.20682pt.
- [14 <./images/grafico_overview.png>]
-<images/traffic_profile.png, id=581, 867.24pt x 433.62pt>
+ [12 <./images/grafico_overview.png>]
+<images/traffic_profile.png, id=536, 867.24pt x 433.62pt>
 File: images/traffic_profile.png Graphic file (type png)
 <use images/traffic_profile.png>
 Package pdftex.def Info: images/traffic_profile.png  used on input line 49.
 (pdftex.def)             Requested size: 368.57838pt x 184.28937pt.
- [15]
+ [13]
 LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
 72.
 
 (C:\Users\bryan\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmtt.fd
 File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [16{C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rmtt.e
+) [14{C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rmtt.e
 nc} <./images/traffic_profile.png>]
-<images/reward_composition.png, id=603, 867.24pt x 433.62pt>
+<images/reward_composition.png, id=557, 867.24pt x 433.62pt>
 File: images/reward_composition.png Graphic file (type png)
 <use images/reward_composition.png>
 Package pdftex.def Info: images/reward_composition.png  used on input line 90.
 (pdftex.def)             Requested size: 368.57838pt x 184.28937pt.
- [17 <./images/reward_composition.png>]
-<images/flujo_entrenamiento.png, id=615, 1027.84pt x 561.09625pt>
+ [15 <./images/reward_composition.png>]
+<images/flujo_entrenamiento.png, id=569, 1027.84pt x 561.09625pt>
 File: images/flujo_entrenamiento.png Graphic file (type png)
 <use images/flujo_entrenamiento.png>
 Package pdftex.def Info: images/flujo_entrenamiento.png  used on input line 132
 .
 (pdftex.def)             Requested size: 368.57838pt x 201.20682pt.
- [18]) [19 <./images/flujo_entrenamiento.png>] [20
-
-]
-Chapter 5.
+ [16]) [17 <./images/flujo_entrenamiento.png>]
+Chapter 9.
 (chapters/results.tex
-<images/comparativa_tesis.png, id=637, 722.7pt x 433.62pt>
+<images/comparativa_tesis.png, id=587, 722.7pt x 433.62pt>
 File: images/comparativa_tesis.png Graphic file (type png)
 <use images/comparativa_tesis.png>
 Package pdftex.def Info: images/comparativa_tesis.png  used on input line 15.
 (pdftex.def)             Requested size: 368.57838pt x 221.14989pt.
- [21]
-<images/queue_distribution.png, id=643, 722.7pt x 433.62pt>
+ [18
+
+]
+<images/queue_distribution.png, id=593, 722.7pt x 433.62pt>
 File: images/queue_distribution.png Graphic file (type png)
 <use images/queue_distribution.png>
 Package pdftex.def Info: images/queue_distribution.png  used on input line 30.
 (pdftex.def)             Requested size: 368.57838pt x 221.14989pt.
- [22 <./images/comparativa_tesis.png>]
-<images/eval_boxplot_queues.png, id=651, 722.7pt x 433.62pt>
+ [19 <./images/comparativa_tesis.png>]
+<images/eval_boxplot_queues.png, id=601, 722.7pt x 433.62pt>
 File: images/eval_boxplot_queues.png Graphic file (type png)
 <use images/eval_boxplot_queues.png>
 Package pdftex.def Info: images/eval_boxplot_queues.png  used on input line 41.
 
 (pdftex.def)             Requested size: 368.57838pt x 221.14989pt.
- [23 <./images/queue_distribution.png> <./images/eval_boxplot_queues.png>]
-<images/action_frequency.png, id=658, 578.16pt x 433.62pt>
+ [20 <./images/queue_distribution.png> <./images/eval_boxplot_queues.png>]
+<images/action_frequency.png, id=608, 578.16pt x 433.62pt>
 File: images/action_frequency.png Graphic file (type png)
 <use images/action_frequency.png>
 Package pdftex.def Info: images/action_frequency.png  used on input line 50.
 (pdftex.def)             Requested size: 368.57838pt x 276.43074pt.
-<images/training_reward.png, id=659, 722.7pt x 433.62pt>
+<images/training_reward.png, id=609, 722.7pt x 433.62pt>
 File: images/training_reward.png Graphic file (type png)
 <use images/training_reward.png>
 Package pdftex.def Info: images/training_reward.png  used on input line 64.
 (pdftex.def)             Requested size: 368.57838pt x 221.14989pt.
- [24 <./images/action_frequency.png>]
-<images/training_entropy.png, id=667, 722.7pt x 433.62pt>
+ [21 <./images/action_frequency.png>]
+<images/training_entropy.png, id=617, 722.7pt x 433.62pt>
 File: images/training_entropy.png Graphic file (type png)
 <use images/training_entropy.png>
 Package pdftex.def Info: images/training_entropy.png  used on input line 73.
 (pdftex.def)             Requested size: 368.57838pt x 221.14989pt.
- [25 <./images/training_reward.png>]
-<images/adaptability_combined.png, id=673, 1027.84pt x 619.31375pt>
+ [22 <./images/training_reward.png>]
+<images/adaptability_combined.png, id=623, 1027.84pt x 619.31375pt>
 File: images/adaptability_combined.png Graphic file (type png)
 <use images/adaptability_combined.png>
 Package pdftex.def Info: images/adaptability_combined.png  used on input line 8
 3.
 (pdftex.def)             Requested size: 368.57838pt x 222.08337pt.
- [26 <./images/training_entropy.png> <./images/adaptability_combined.png>] [27]
-<images/mapa.png, id=693, 1069.158pt x 420.261pt>
+ [23 <./images/training_entropy.png> <./images/adaptability_combined.png>] [24]
+<images/mapa.png, id=643, 1069.158pt x 420.261pt>
 File: images/mapa.png Graphic file (type png)
 <use images/mapa.png>
 Package pdftex.def Info: images/mapa.png  used on input line 131.
 (pdftex.def)             Requested size: 414.6463pt x 162.99052pt.
- [28]
-<images/throughput_comparison.png, id=698, 722.7pt x 433.62pt>
+ [25]
+<images/throughput_comparison.png, id=648, 722.7pt x 433.62pt>
 File: images/throughput_comparison.png Graphic file (type png)
 <use images/throughput_comparison.png>
 Package pdftex.def Info: images/throughput_comparison.png  used on input line 1
 41.
 (pdftex.def)             Requested size: 368.57838pt x 221.14989pt.
- [29 <./images/mapa.png> <./images/throughput_comparison.png>]
-<images/relative_improvement.png, id=707, 722.7pt x 361.35pt>
+ [26 <./images/mapa.png> <./images/throughput_comparison.png>]
+<images/relative_improvement.png, id=657, 722.7pt x 361.35pt>
 File: images/relative_improvement.png Graphic file (type png)
 <use images/relative_improvement.png>
 Package pdftex.def Info: images/relative_improvement.png  used on input line 15
 2.
 (pdftex.def)             Requested size: 368.57838pt x 184.29158pt.
-<images/congestion_levels.png, id=709, 722.7pt x 433.62pt>
+<images/congestion_levels.png, id=659, 722.7pt x 433.62pt>
 File: images/congestion_levels.png Graphic file (type png)
 <use images/congestion_levels.png>
 Package pdftex.def Info: images/congestion_levels.png  used on input line 163.
 (pdftex.def)             Requested size: 368.57838pt x 221.14989pt.
- [30 <./images/relative_improvement.png>]) [31 <./images/congestion_levels.png>
-] [32
-
+ [27 <./images/relative_improvement.png>]) [28 <./images/congestion_levels.png>
 ]
-Chapter 6.
-(chapters/conclusions.tex [33]) (chapters/bibliography.tex [34] [35
+Chapter 10.
+(chapters/conclusions.tex [29
 
-] [36]
-[37] [38]) [39] [40
+]) (chapters/bibliography.tex [30] [31
+
+] [32]
+[33] [34]) [35] [36
 
 
-] [41] [42] (chapters/appendix.tex
+] (chapters/appendix.tex
 Appendix A.
-) [43
+) [37
 
 ] (main.aux)
  ***********
@@ -1066,33 +1066,32 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 405DA542051B57D513E2666A27F0694E;9429.
+(rerunfilecheck)             Checksum: 07ACA0FDF2985ECDDBF2167DE6EA94A3;9431.
  ) 
 Here is how much of TeX's memory you used:
- 22922 strings out of 474486
- 428032 string characters out of 5743755
- 1944542 words of memory out of 5000000
- 44627 multiletter control sequences out of 15000+600000
- 610949 words of font info for 68 fonts, out of 8000000 for 9000
+ 22889 strings out of 474486
+ 427467 string characters out of 5743755
+ 1943542 words of memory out of 5000000
+ 44609 multiletter control sequences out of 15000+600000
+ 608006 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,79p,2526b,608s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,2526b,604s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
 b><C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pf
 b><C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb
-><C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb>
-<C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><
-C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C
-:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/
-Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/
-Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/
-Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/U
-sers/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/U
-sers/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/ms
-bm10.pfb>
-Output written on main.pdf (65 pages, 4241861 bytes).
+><C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
+<C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><
+C:/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:
+/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:
+/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:
+/Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/
+Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/
+Users/bryan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/m
+sbm10.pfb>
+Output written on main.pdf (50 pages, 4185461 bytes).
 PDF statistics:
- 939 PDF objects out of 1000 (max. 8388607)
- 208 named destinations out of 1000 (max. 500000)
+ 871 PDF objects out of 1000 (max. 8388607)
+ 194 named destinations out of 1000 (max. 500000)
  510 words of extra memory for PDF output out of 10000 (max. 10000000)
 

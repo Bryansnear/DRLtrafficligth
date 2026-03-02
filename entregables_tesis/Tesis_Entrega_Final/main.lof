@@ -4,24 +4,24 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Visualización de la intersección simulada en SUMO, mostrando las 4 aproximaciones y la gestión semafórica.}}{7}{figure.caption.11}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Visualización de la intersección simulada en SUMO, mostrando las 4 aproximaciones y la gestión semafórica.}}{6}{figure.caption.7}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Arquitectura de control en bucle cerrado integrando SUMO, TraCI y el Agente PPO.}}{14}{figure.caption.12}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Perfil de probabilidad de inserción vehicular a lo largo de la hora simulada.}}{16}{figure.caption.13}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Dinámica de la función de recompensa. Se observa cómo la penalización por cola domina, pero el desequilibrio crece si se ignora una fase.}}{17}{figure.caption.14}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Diagrama de flujo del proceso de entrenamiento y simulación.}}{19}{figure.caption.16}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Arquitectura de control en bucle cerrado integrando SUMO, TraCI y el Agente PPO.}}{12}{figure.caption.8}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Perfil de probabilidad de inserción vehicular a lo largo de la hora simulada.}}{14}{figure.caption.9}%
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Dinámica de la función de recompensa. Se observa cómo la penalización por cola domina, pero el desequilibrio crece si se ignora una fase.}}{15}{figure.caption.10}%
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Diagrama de flujo del proceso de entrenamiento y simulación.}}{17}{figure.caption.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Comparación de Throughput (veh/h) y Cola Promedio (veh) entre PPO y Baseline.}}{22}{figure.caption.17}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Histograma de longitud de colas. Nótese cómo PPO concentra la densidad cerca de cero.}}{23}{figure.caption.18}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama de caja comparativo de la longitud de colas.}}{23}{figure.caption.19}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Comparación de la frecuencia de cambios de fase por hora.}}{24}{figure.caption.20}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Evolución de la recompensa media por episodio durante el entrenamiento.}}{25}{figure.caption.21}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Disminución de la entropía de la política a lo largo del entrenamiento.}}{26}{figure.caption.22}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Correlación entre la carga vehicular dinámica (arriba) y la respuesta en longitud de cola (abajo).}}{26}{figure.caption.23}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Mapa de la zona de estudio: intersección del Mercado Mayorista. Se ilustra la geometría de la red y la disposición de los sensores en los accesos Norte, Sur, Este y Oeste.}}{29}{figure.caption.25}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Comparación de throughput acumulado en escenario de saturación (2000 veh/h).}}{29}{figure.caption.26}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Mejora relativa porcentual del DRL frente al Baseline.}}{30}{figure.caption.27}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Niveles de congestión (vehículos detenidos) a lo largo del tiempo.}}{31}{figure.caption.28}%
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Comparación de Throughput (veh/h) y Cola Promedio (veh) entre PPO y Baseline.}}{19}{figure.caption.13}%
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Histograma de longitud de colas. Nótese cómo PPO concentra la densidad cerca de cero.}}{20}{figure.caption.14}%
+\contentsline {figure}{\numberline {9.3}{\ignorespaces Diagrama de caja comparativo de la longitud de colas.}}{20}{figure.caption.15}%
+\contentsline {figure}{\numberline {9.4}{\ignorespaces Comparación de la frecuencia de cambios de fase por hora.}}{21}{figure.caption.16}%
+\contentsline {figure}{\numberline {9.5}{\ignorespaces Evolución de la recompensa media por episodio durante el entrenamiento.}}{22}{figure.caption.17}%
+\contentsline {figure}{\numberline {9.6}{\ignorespaces Disminución de la entropía de la política a lo largo del entrenamiento.}}{23}{figure.caption.18}%
+\contentsline {figure}{\numberline {9.7}{\ignorespaces Correlación entre la carga vehicular dinámica (arriba) y la respuesta en longitud de cola (abajo).}}{23}{figure.caption.19}%
+\contentsline {figure}{\numberline {9.8}{\ignorespaces Mapa de la zona de estudio: intersección del Mercado Mayorista. Se ilustra la geometría de la red y la disposición de los sensores en los accesos Norte, Sur, Este y Oeste.}}{26}{figure.caption.21}%
+\contentsline {figure}{\numberline {9.9}{\ignorespaces Comparación de throughput acumulado en escenario de saturación (2000 veh/h).}}{26}{figure.caption.22}%
+\contentsline {figure}{\numberline {9.10}{\ignorespaces Mejora relativa porcentual del DRL frente al Baseline.}}{27}{figure.caption.23}%
+\contentsline {figure}{\numberline {9.11}{\ignorespaces Niveles de congestión (vehículos detenidos) a lo largo del tiempo.}}{28}{figure.caption.24}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -1,53 +1,53 @@
-\contentsline {chapter}{\centering Dedicatoria}{v}{chapter*.4}%
-\contentsline {chapter}{\centering Agradecimientos}{vii}{chapter*.5}%
-\contentsline {chapter}{\centering Resumen}{ix}{chapter*.6}%
-\contentsline {chapter}{\centering Abstract}{xi}{chapter*.7}%
-\contentsline {chapter}{Contents}{xiii}{chapter*.8}%
-\contentsline {chapter}{List of Tables}{xvii}{chapter*.9}%
-\contentsline {chapter}{List of Figures}{xix}{chapter*.10}%
-\contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Contexto del problema}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Motivación}{1}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Planteamiento del problema}{2}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Objetivo general}{2}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Objetivos específicos}{2}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Justificación}{2}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Alcance y limitaciones}{3}{section.1.7}%
-\contentsline {chapter}{\numberline {2}Marco Teórico}{5}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Conceptos de Tránsito Vehicular}{5}{section.2.1}%
-\contentsline {section}{\numberline {2.2}SUMO: Características y Arquitectura}{6}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Fundamentos de Aprendizaje por Refuerzo (RL)}{7}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Deep Reinforcement Learning y PPO}{8}{section.2.4}%
-\contentsline {chapter}{\numberline {3}Trabajos Relacionados}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Revisiones y bases comparativas}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Control cooperativo y escalable}{11}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Tendencias recientes}{12}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Trabajos adicionales considerados}{12}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Metodología}{13}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Visión General de la Metodología}{13}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Diseño del cruce estudiado}{14}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Modelado y configuración de SUMO}{15}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Formulación del entorno RL}{16}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Arquitectura y configuración del algoritmo PPO}{17}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Flujo de entrenamiento y simulación}{18}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Resultados y Discusión}{21}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Parámetros de experimentación}{21}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Evaluación Comparativa del Desempeño}{21}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Análisis de Estabilidad y Colas}{22}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Evolución del Aprendizaje}{25}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Discusión de resultados}{26}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Comparación con métodos tradicionales}{27}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Validación estadística}{28}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Robustez ante variaciones de tráfico}{28}{section.5.8}%
-\contentsline {section}{\numberline {5.9}Entorno de Implementación}{28}{section.5.9}%
-\contentsline {section}{\numberline {5.10}Desempeño bajo Saturación Crítica (2000 veh/h)}{29}{section.5.10}%
-\contentsline {section}{\numberline {5.11}Análisis de sensibilidad del reward}{31}{section.5.11}%
-\contentsline {chapter}{\numberline {6}Conclusiones y Trabajo Futuro}{33}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Conclusiones generales}{33}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Limitaciones}{33}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Propuestas de trabajo futuro}{34}{section.6.3}%
-\contentsline {chapter}{Bibliography}{35}{chapter*.29}%
-\contentsline {chapter}{Appendices}{40}{section*.30}%
-\contentsline {chapter}{\numberline {A}Anexos}{43}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Repositorio de Código}{43}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Estructura del Proyecto}{43}{section.A.2}%
+\contentsline {chapter}{\numberline {1}\centering Dedicatoria}{iii}{chapter.1}%
+\contentsline {chapter}{\numberline {2}\centering Agradecimientos}{iv}{chapter.2}%
+\contentsline {chapter}{\numberline {3}\centering Resumen}{v}{chapter.3}%
+\contentsline {chapter}{\numberline {4}\centering Abstract}{vi}{chapter.4}%
+\contentsline {chapter}{Contents}{vii}{chapter*.4}%
+\contentsline {chapter}{List of Tables}{x}{chapter*.5}%
+\contentsline {chapter}{List of Figures}{xi}{chapter*.6}%
+\contentsline {chapter}{\numberline {5}Introducción}{1}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Contexto del problema}{1}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Motivación}{1}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Planteamiento del problema}{2}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Objetivo general}{2}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Objetivos específicos}{2}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Justificación}{2}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Alcance y limitaciones}{3}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Marco Teórico}{4}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conceptos de Tránsito Vehicular}{4}{section.6.1}%
+\contentsline {section}{\numberline {6.2}SUMO: Características y Arquitectura}{5}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Fundamentos de Aprendizaje por Refuerzo (RL)}{6}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Deep Reinforcement Learning y PPO}{7}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Trabajos Relacionados}{9}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Revisiones y bases comparativas}{9}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Control cooperativo y escalable}{9}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Tendencias recientes}{10}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Trabajos adicionales considerados}{10}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Metodología}{11}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Visión General de la Metodología}{11}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Diseño del cruce estudiado}{12}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Modelado y configuración de SUMO}{13}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Formulación del entorno RL}{14}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Arquitectura y configuración del algoritmo PPO}{15}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Flujo de entrenamiento y simulación}{16}{section.8.6}%
+\contentsline {chapter}{\numberline {9}Resultados y Discusión}{18}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Parámetros de experimentación}{18}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Evaluación Comparativa del Desempeño}{18}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Análisis de Estabilidad y Colas}{19}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Evolución del Aprendizaje}{22}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Discusión de resultados}{23}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Comparación con métodos tradicionales}{24}{section.9.6}%
+\contentsline {section}{\numberline {9.7}Validación estadística}{25}{section.9.7}%
+\contentsline {section}{\numberline {9.8}Robustez ante variaciones de tráfico}{25}{section.9.8}%
+\contentsline {section}{\numberline {9.9}Entorno de Implementación}{25}{section.9.9}%
+\contentsline {section}{\numberline {9.10}Desempeño bajo Saturación Crítica (2000 veh/h)}{26}{section.9.10}%
+\contentsline {section}{\numberline {9.11}Análisis de sensibilidad del reward}{28}{section.9.11}%
+\contentsline {chapter}{\numberline {10}Conclusiones y Trabajo Futuro}{29}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Conclusiones generales}{29}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Limitaciones}{29}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Propuestas de trabajo futuro}{30}{section.10.3}%
+\contentsline {chapter}{Bibliography}{31}{chapter*.25}%
+\contentsline {chapter}{Appendices}{36}{section*.26}%
+\contentsline {chapter}{\numberline {A}Anexos}{37}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Repositorio de Código}{37}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Estructura del Proyecto}{37}{section.A.2}%
